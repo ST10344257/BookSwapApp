@@ -74,8 +74,7 @@ class BookRepository {
     suspend fun getAllBooks(limit: Int = 20): Result<List<Book>> {
         return try {
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                .whereEqualTo("status", BookStatus.AVAILABLE.name)
-                .orderBy("listedAt", Query.Direction.DESCENDING)
+                .whereEqualTo("status", BookStatus.AVAILABLE.name)  // Only show AVAILABLE
                 .limit(limit.toLong())
                 .get()
                 .await()
@@ -83,26 +82,11 @@ class BookRepository {
             val books = snapshot.toObjects(Book::class.java)
             Result.Success(books)
         } catch (e: Exception) {
-            // error for empty/new databases
-            when {
-                e.message?.contains("FAILED_PRECONDITION") == true ||
-                        e.message?.contains("index") == true -> {
-                    // Index not created yet - try without ordering
-                    try {
-                        val simpleSnapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                            .whereEqualTo("status", BookStatus.AVAILABLE.name)
-                            .limit(limit.toLong())
-                            .get()
-                            .await()
-                        Result.Success(simpleSnapshot.toObjects(Book::class.java))
-                    } catch (retryException: Exception) {
-                        Result.Success(emptyList()) // Collection doesn't exist yet
-                    }
-                }
-                e.message?.contains("NOT_FOUND") == true -> {
-                    Result.Success(emptyList()) // Collection doesn't exist
-                }
-                else -> Result.Error(e) // Actual error
+            if (e.message?.contains("FAILED_PRECONDITION") == true ||
+                e.message?.contains("NOT_FOUND") == true) {
+                Result.Success(emptyList())
+            } else {
+                Result.Error(e)
             }
         }
     }
@@ -131,8 +115,8 @@ class BookRepository {
 
     suspend fun searchBooks(query: String): Result<List<Book>> {
         return try {
-            // Note: Firestore doesn't support full-text search well
-            // For production, consider Algolia or similar service
+            //Firestore doesn't support full-text search well
+            // Algolia
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
                 .whereEqualTo("status", BookStatus.AVAILABLE.name)
                 .get()
@@ -152,11 +136,43 @@ class BookRepository {
         }
     }
 
-    suspend fun getUserBooks(userId: String): Result<List<Book>> {
+    suspend fun getBooksBySeller(sellerId: String): Result<List<Book>> {
         return try {
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                .whereEqualTo("sellerId", userId)
-                .orderBy("listedAt", Query.Direction.DESCENDING)
+                .whereEqualTo("sellerId", sellerId)
+                .get()
+                .await()
+
+            val books = snapshot.toObjects(Book::class.java)
+            Result.Success(books)
+        } catch (e: Exception) {
+            // If index error, try fetching all books and filter locally
+            if (e.message?.contains("FAILED_PRECONDITION") == true ||
+                e.message?.contains("index") == true) {
+                try {
+                    android.util.Log.d("BookRepository", "Index not ready, fetching all books and filtering locally")
+
+                    val allSnapshot = firestore.collection(Constants.BOOKS_COLLECTION)
+                        .get()
+                        .await()
+
+                    val allBooks = allSnapshot.toObjects(Book::class.java)
+                    val filteredBooks = allBooks.filter { it.sellerId == sellerId }
+
+                    Result.Success(filteredBooks)
+                } catch (retryException: Exception) {
+                    Result.Error(retryException)
+                }
+            } else {
+                Result.Error(e)
+            }
+        }
+    }
+
+    /*suspend fun getBooksBySeller(sellerId: String): Result<List<Book>> {
+        return try {
+            val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
+                .whereEqualTo("sellerId", sellerId)
                 .get()
                 .await()
 
@@ -165,7 +181,7 @@ class BookRepository {
         } catch (e: Exception) {
             Result.Error(e)
         }
-    }
+    }*/
 
     suspend fun updateBookStatus(bookId: String, status: BookStatus): Result<Boolean> {
         return try {
@@ -212,4 +228,6 @@ class BookRepository {
             // Fail silently for view counts
         }
     }
+
+
 }
