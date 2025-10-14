@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/profilebg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="List a Book"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image Selection Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Book Images (up to 5)"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selectedImagesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal" />
+
+            <Button
+                android:id="@+id/btnSelectImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#54977A"
+                android:fontFamily="@font/rubik_medium"
+                android:text="Add Images"
+                android:textSize="16sp"
+                app:cornerRadius="8dp" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Title"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:hint="Enter book title"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- Author -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Author"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:hint="Enter author name"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- ISBN with Help Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="ISBN"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/btnIsbnHelp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+
+                        android:layout_marginLeft="270dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="ISBN Help"
+                        android:src="@android:drawable/ic_menu_help"
+                        app:tint="#54977A" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edtISBN"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_edttext"
+                    android:fontFamily="@font/rubik"
+                    android:hint="Enter ISBN number"
+                    android:inputType="number"
+                    android:padding="12dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Edition -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Edition"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtEdition"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:hint="e.g., 1st, 2nd, 3rd"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- Course Code -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Course Code"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtCourseCode"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:hint="e.g., CS101"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- Category -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Category"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinnerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:padding="12dp" />
+
+            <!-- Price -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Price (R)"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtPrice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:hint="Enter price"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- Condition -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Condition"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinnerCondition"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:padding="12dp" />
+
+            <!-- Description -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Description (Optional)"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:fontFamily="@font/rubik"
+                android:gravity="top|start"
+                android:hint="Describe the book's condition, highlights, notes, etc."
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textSize="16sp" />
+
+            <!-- Submit Button -->
+            <Button
+                android:id="@+id/btnListBook"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FF8379"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="List Book"
+                android:textSize="20sp"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/profilebg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/rubik_semibold"
+            android:text="Shopping Cart"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cartCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="#FF8379"
+            android:fontFamily="@font/rubik_bold"
+            android:gravity="center"
+            android:minWidth="32dp"
+            android:minHeight="32dp"
+            android:padding="4dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Cart Items RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp" />
+
+    <!-- Empty Cart View -->
+    <LinearLayout
+        android:id="@+id/emptyCartView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:alpha="0.5"
+            android:src="@drawable/shopping_cart_svgrepo_com" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/rubik_medium"
+            android:text="Your cart is empty"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnBrowseBooks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#54977A"
+            android:fontFamily="@font/rubik_semibold"
+            android:text="Browse Books"
+            android:textSize="16sp"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <!-- Bottom Summary Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/summaryCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="Subtotal:"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/subtotalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="R 0.00"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="Total:"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/totalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="R 0.00"
+                    android:textColor="#FF8379"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnCheckout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#FF8379"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Proceed to Checkout"
+                android:textSize="18sp"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

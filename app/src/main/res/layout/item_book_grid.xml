@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/bookCover"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Book Cover Image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:srcCompat="@drawable/books_svgrepo_com" />
+
+        <TextView
+            android:id="@+id/bookTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/bookCover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Building Products With Data" />
+
+        <TextView
+            android:id="@+id/bookPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintTop_toBottomOf="@id/bookTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="R550" />
+
+        <Button
+            android:id="@+id/btnAddToCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Add to Cart"
+            app:layout_constraintTop_toBottomOf="@id/bookPrice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/favoriteIcon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageView
+            android:id="@+id/favoriteIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_favorite_border"
+            app:tint="@android:color/darker_gray"
+            android:contentDescription="Add to Favorites"
+            app:layout_constraintTop_toTopOf="@id/btnAddToCart"
+            app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/rubik</item>
+        <item>@font/rubik_bold</item>
+        <item>@font/rubik_extrabold</item>
+        <item>@font/rubik_light</item>
+        <item>@font/rubik_medium</item>
+        <item>@font/rubik_mono_one</item>
+        <item>@font/rubik_semibold</item>
+    </array>
+</resources>

@@ -1,0 +1,357 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/top_curve_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_extrabold"
+                        android:text="Create New
+                     Account"
+                        android:textAlignment="center"
+                        android:textColor="#F56A5E"
+                        android:textSize="45sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <!-- have an account-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Already Registered?"
+                        android:textAlignment="viewStart"
+                        android:textColor="#9EF56A5D"
+                        android:textSize="20dp" />
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txtlogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="@string/logintext"
+                        android:textColor="#F56A5D"
+                        android:textSize="22dp"
+                        android:textStyle="italic" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!--name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Name"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/edtname"
+                        android:layout_width="268dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/rounded_edttext"
+                        android:fontFamily="@font/rubik"
+                        android:hint="Enter your name....."
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!--surname-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Surname"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/edtsurname"
+                        android:layout_width="268dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/rounded_edttext"
+                        android:fontFamily="@font/rubik"
+                        android:hint="Enter your surnname....."
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!--email-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Email"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/edtemail"
+                        android:layout_width="268dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/rounded_edttext"
+                        android:fontFamily="@font/rubik"
+                        android:hint="Enter your email....."
+                        android:inputType="textEmailAddress"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!--password-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Password"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/edtpassword"
+                        android:layout_width="268dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/rounded_edttext"
+                        android:fontFamily="@font/rubik"
+                        android:hint="Enter your password....."
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+
+                <!--confirm password-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Confirm"
+                        android:textSize="25sp" />
+
+                    <EditText
+                        android:id="@+id/edtconfirm"
+                        android:layout_width="268dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="50dp"
+                        android:background="@drawable/rounded_edttext"
+                        android:fontFamily="@font/rubik"
+                        android:hint="Confrim your password....."
+                        android:inputType="text"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Around line where you have the LinearLayout with buttons -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btnsignup"
+                        android:layout_width="234dp"
+                        android:layout_height="60dp"
+                        android:backgroundTint="#FF8379"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Sign Up"
+                        android:textSize="20sp"
+                        app:cornerRadius="10dp" />
+                </LinearLayout>
+
+                <!--OR SECTION-->
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal">
+
+                    <View
+                        android:layout_width="107dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="30dp"
+                        android:background="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/rubik_bold"
+                        android:text="OR"
+                        android:textColor="@color/black"
+                        android:textSize="27dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="107dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@color/black" />
+                </LinearLayout>
+                <!--google button-->
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/btngoogle"
+                    android:layout_width="382dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/rounded_edttext"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="103dp"
+                        android:layout_height="60dp"
+                        android:background="#00FFFFFF"
+                        android:scaleType="fitCenter"
+                        android:textAlignment="center"
+                        app:srcCompat="@drawable/google_color_svgrepo_com" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/rubik_bold"
+                        android:text="Continue with Google"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-900dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginLeft="260dp"
+                    android:padding="10dp"
+                    tools:srcCompat="@drawable/books_book_svgrepo_com"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

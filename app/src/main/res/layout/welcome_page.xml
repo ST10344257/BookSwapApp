@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <!-- Wavy Image at the Top -->
+
+
+    <!-- Rest of the layout stays same -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/topImage"
+        android:layout_width="412dp"
+        android:layout_height="416dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CurvedBottomShape" />
+
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/rubik_bold"
+        android:text="Welcome"
+        android:textColor="@color/material_dynamic_neutral_variant50"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/welcomeSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomeSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="153dp"
+        android:fontFamily="@font/rubik"
+        android:gravity="center"
+        android:text="“Swap”  “Save”  “Study”"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:typeface="sans"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/welcomeBody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Browse thousands of listings for students just like you,"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeSubtitle" />
+
+    <LinearLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/baseline_circle_24" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/baseline_circle_24"
+            android:backgroundTint="@color/white" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/baseline_circle_24"
+            android:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <!-- Left Arrow -->
+
+
+    <!-- Right Arrow -->
+    <ImageButton
+        android:id="@+id/btnright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="33dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeBody"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/profilebg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Book Details"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:id="@+id/btnAddToCart"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/shopping_cart_svgrepo_com" />
+        </LinearLayout>
+
+        <!-- Image ViewPager -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/imageViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rounded_edttext" />
+
+        <!-- Dots Indicator -->
+        <LinearLayout
+            android:id="@+id/dotsIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" />
+
+        <!-- Book Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/bookTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="Book Title"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/bookAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="by Author Name"
+                    android:textColor="#666666"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bookPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="R 250.00"
+                    android:textColor="#FF8379"
+                    android:textSize="32sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Condition:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/bookCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_edttext"
+                        android:backgroundTint="#E8F5E9"
+                        android:fontFamily="@font/rubik_medium"
+                        android:padding="8dp"
+                        android:text="Good"
+                        android:textColor="#2E7D32" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="ISBN:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/bookISBN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik"
+                        android:text="978-0-123456-78-9"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_semibold"
+                        android:text="Course Code:"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/bookCourseCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik"
+                        android:text="CS101"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Description"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bookDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:text="Book description goes here..."
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Seller Info Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Seller Information"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/sellerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="Seller Name"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/sellerInstitution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/rubik"
+                    android:text="University Name"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBuyNow"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#FF8379"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Buy Now"
+                android:textSize="18sp"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/btnMessageSeller"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#54977A"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="Message"
+                android:textSize="18sp"
+                app:cornerRadius="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

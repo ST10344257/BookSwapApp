@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Top Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/profilebg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="My Profile"
+                android:textSize="24sp" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/closed_book_with_marker_svgrepo_com" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <!-- Quick Action Icons -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingHorizontal="16dp"
+            android:rowCount="2">
+
+            <!-- Track Orders -->
+            <LinearLayout
+                android:id="@+id/trackOrdersIcon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:padding="8dp"
+                    android:src="@drawable/baseline_calendar_month_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="Track Orders"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Personal Details -->
+            <LinearLayout
+                android:id="@+id/personaldetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:padding="8dp"
+                    android:src="@drawable/outline_person_book_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="Personal Details"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Change Password -->
+            <LinearLayout
+                android:id="@+id/password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:padding="8dp"
+                    android:src="@drawable/outline_key_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="Change Password"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- My Books -->
+            <LinearLayout
+                android:id="@+id/books"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:padding="8dp"
+                    android:src="@drawable/outline_book_4_24" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:gravity="center"
+                    android:text="My Books For Sale"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </GridLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <!-- Wallet Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#80FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="My Wallet"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/walletBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="R 0.00"
+                    android:textColor="#2E7D32"
+                    android:textSize="36sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Action Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+            <LinearLayout
+                android:id="@+id/btnsell"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edttext"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_attach_money_24"
+                    app:tint="#54977A" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Sell Books"
+                    android:textColor="#54977A"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnaccount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edttext"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_wallet_24"
+                    app:tint="#54977A" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="My Account"
+                    android:textColor="#54977A"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Payment Preference Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Payment Preference"
+                    android:textSize="18sp" />
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+                    <RadioButton
+                        android:id="@+id/wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="My Wallet"
+                        android:textSize="16sp" />
+                    <RadioButton
+                        android:id="@+id/account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/rubik_medium"
+                        android:text="Bank Account"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Logout Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Account Actions"
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/btnLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#F44336"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:text="Logout"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:cornerRadius="10dp"
+                    app:icon="@android:drawable/ic_lock_power_off"
+                    app:iconGravity="start"
+                    app:iconTint="@color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>
+

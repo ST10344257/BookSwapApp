@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Greeting Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/avatarIcon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/bg_circle"
+                    android:padding="6dp"
+                    tools:srcCompat="@drawable/baseline_person_3_24" />
+
+                <TextView
+                    android:id="@+id/greetingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:paddingStart="22dp"
+                    android:text="Hi, User"
+                    android:textColor="@color/black"
+                    android:textSize="25sp" />
+
+                <ImageView
+                    android:id="@+id/notificationIcon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bg_circle"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/shopping_cart_svgrepo_com" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+            <!-- Search bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp">
+
+                <EditText
+                    android:id="@+id/searchBar"
+                    android:layout_width="283dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:height="50dp"
+                    android:background="@drawable/bg_rounded"
+                    android:fontFamily="@font/rubik_medium"
+                    android:hint="Searching..."
+                    android:paddingHorizontal="20dp"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_marginLeft="10dp"
+                    app:srcCompat="@drawable/search_svgrepo_com" />
+            </LinearLayout>
+
+            <!-- Categories -->
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center"
+                    android:marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/books_svgrepo_com" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:text="All"
+                            android:textSize="25sp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/book_engineering_svgrepo_com__1_" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:text="Tech"
+                            android:textSize="23sp" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/law_book_law_svgrepo_com" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:text="Law"
+                            android:textSize="23sp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            app:srcCompat="@drawable/google_books_svgrepo_com" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:text="Business"
+                            android:textSize="23sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <!-- Hot Deals -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="View All"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="50dp"
+                    android:padding="4dp"
+                    app:srcCompat="@drawable/arrow_left_1_svgrepo_com" />
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="50dp"
+                    android:padding="4dp"
+                    app:srcCompat="@drawable/arrow_right_1_svgrepo_com" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <LinearLayout
+                android:id="@+id/booklayout"
+                android:layout_width="match_parent"
+                android:layout_height="306dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_round_section"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+            <!-- Buy/Sell Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:marginTop="16dp"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:gravity="center"
+                    android:text="Looking For a specific book?"
+                    android:textSize="22sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:srcCompat="@drawable/books_svgrepo_com__1_" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:orientation="vertical">
+
+                        <Button
+                            android:id="@+id/btnBuy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/rubik_medium"
+                            android:marginTop="8dp"
+                            android:text="Sell Textbooks"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:text="Buy TextBooks"
+                            android:textSize="19sp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="36dp"
+                            android:background="@drawable/bg_rounded"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:hint="Type ISBN / TextBook Name"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- How to sell section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_green_card"
+                android:marginTop="16dp"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_mono_one"
+                    android:gravity="center"
+                    android:marginBottom="8dp"
+                    android:text="How to sell your textbook?"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp" />
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:layout_width="63dp"
+                            android:layout_height="63dp"
+                            app:srcCompat="@drawable/outline_barcode_24" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:text="scan the barcode or enter the ISBN at the back of your book"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:layout_width="63dp"
+                            android:layout_height="63dp"
+                            app:srcCompat="@drawable/baseline_star_half_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:text="rate the condition of your book and an amount will display based on condition"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:layout_width="63dp"
+                            android:layout_height="63dp"
+                            app:srcCompat="@drawable/outline_trolley_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:text="No collection fee, we will do it for free!"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="6dp">
+
+                        <ImageView
+                            android:layout_width="63dp"
+                            android:layout_height="63dp"
+                            app:srcCompat="@drawable/outline_money_bag_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/rubik_medium"
+                            android:gravity="center"
+                            android:text="once collected, you’ll receive a notification for your payment in 5 working days."
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background">
+
+    <!-- Wavy Image at the Top -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/topImage"
+        android:layout_width="412dp"
+        android:layout_height="341dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/insitebg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CurvedBottomShape" />
+
+
+    <!-- Rest of the layout stays same -->
+    <TextView
+        android:id="@+id/insightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="72dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/rubik_bold"
+        android:text="Insight"
+        android:textColor="@color/material_dynamic_neutral_variant50"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/welcomeBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/welcomeBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="192dp"
+        android:fontFamily="@font/rubik_medium"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="See which books are in demand, track price changes, and find the best time to buy or sell."
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/indicatorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/baseline_circle_24"
+            android:backgroundTint="@color/white" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/baseline_circle_24" />
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/baseline_circle_24"
+            android:backgroundTint="@color/white" />
+    </LinearLayout>
+
+    <!-- Left Arrow -->
+
+    <!-- Right Arrow -->
+
+    <ImageButton
+        android:id="@+id/btnprevious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Previous"
+        android:src="@drawable/arrow_left"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btnright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Next"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/indicatorLayout"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

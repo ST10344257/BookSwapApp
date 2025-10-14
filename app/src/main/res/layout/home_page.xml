@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Greeting Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/avatarIcon"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/bg_circle"
+                        android:padding="8dp"
+                        android:src="@drawable/baseline_person_3_24" />
+
+                    <TextView
+                        android:id="@+id/greetingText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/rubik_bold"
+                        android:paddingStart="16dp"
+                        android:text="Hi, User"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/notificationIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_circle"
+                        android:padding="8dp"
+                        android:src="@drawable/shopping_cart_svgrepo_com" />
+                </LinearLayout>
+
+                <!-- Search Bar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="25dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="8dp"
+                            android:src="@drawable/search_svgrepo_com" />
+
+                        <EditText
+                            android:id="@+id/searchBar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/rubik_medium"
+                            android:hint="Search for books..."
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:paddingStart="12dp"
+                            android:paddingTop="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingBottom="12dp"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Category Filter -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- All Category -->
+                        <LinearLayout
+                            android:id="@+id/categoryAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="#FF8379"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/icon_all"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/books_svgrepo_com"
+                                app:tint="@color/white" />
+
+                            <TextView
+                                android:id="@+id/text_all"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="All"
+                                android:textColor="@color/white"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content" />
+
+                        <!-- Tech Category -->
+                        <LinearLayout
+                            android:id="@+id/categoryTech"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/icon_tech"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/book_engineering_svgrepo_com__1_" />
+
+                            <TextView
+                                android:id="@+id/text_tech"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="Tech"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content" />
+
+                        <!-- Law Category -->
+                        <LinearLayout
+                            android:id="@+id/categoryLaw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/icon_law"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/law_book_law_svgrepo_com" />
+
+                            <TextView
+                                android:id="@+id/text_law"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="Law"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content" />
+
+                        <!-- Business Category -->
+                        <LinearLayout
+                            android:id="@+id/categoryBusiness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/icon_business"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/google_books_svgrepo_com" />
+
+                            <TextView
+                                android:id="@+id/text_business"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="Business"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content" />
+
+                        <!-- Science Category -->
+                        <LinearLayout
+                            android:id="@+id/categoryScience"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/icon_science"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/books_svgrepo_com" />
+
+                            <TextView
+                                android:id="@+id/text_science"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="Science"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="wrap_content" />
+
+                        <LinearLayout
+                            android:id="@+id/categoryGoogleBooks"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_edttext"
+                            android:backgroundTint="@color/white"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground">
+
+                            <ImageView
+                                android:id="@+id/icon_google"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/google_books_svgrepo_com" />
+
+                            <TextView
+                                android:id="@+id/text_google"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/rubik_medium"
+                                android:text="Google Books"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Section Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_bold"
+                    android:text="Available Books"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/viewAllBooks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="View All"
+                    android:textColor="#54977A"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Books RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/booksRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_book" />
+
+            <!-- Empty State -->
+            <LinearLayout
+                android:id="@+id/emptyBooksView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:alpha="0.5"
+                    android:src="@drawable/books_svgrepo_com" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/rubik_medium"
+                    android:text="No books available"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:text="Be the first to list a book!"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Quick Info Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#E8F5E9">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/rubik_bold"
+                        android:text="💡 Quick Tip"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/rubik"
+                        android:text="List your old textbooks and help other students save money while earning some cash!"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading Progress -->
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
+        android:contentDescription="Add Book"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="#FF8379"
+        app:tint="@color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
