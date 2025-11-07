@@ -9,6 +9,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import android.content.Context
 
 
 class PasswordChangeActivity : AppCompatActivity() {
@@ -16,6 +17,8 @@ class PasswordChangeActivity : AppCompatActivity() {
     // Use View Binding correctly
     private lateinit var binding: PasswordPageBinding
     private lateinit var auth: FirebaseAuth
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,8 @@ class PasswordChangeActivity : AppCompatActivity() {
 
         setupClickListeners()
     }
+
+
 
     private fun setupClickListeners() {
         // Use binding to access views

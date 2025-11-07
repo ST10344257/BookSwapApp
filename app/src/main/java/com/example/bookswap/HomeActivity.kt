@@ -3,8 +3,9 @@ package com.example.bookswap
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -18,45 +19,70 @@ import com.example.bookswap.data.Result
 import com.example.bookswap.data.models.Book
 import com.example.bookswap.data.models.BookCategory
 import com.example.bookswap.data.repository.BookRepository
+import com.example.bookswap.data.repository.GoogleBooksRepository
 import com.example.bookswap.databinding.HomePageBinding
+import com.example.bookswap.utils.Constants
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 
 class HomeActivity : AppCompatActivity() {
 
-    // Use View Binding for safer, cleaner code
     private lateinit var binding: HomePageBinding
     private lateinit var bookAdapter: BookAdapter
     private val bookRepository = BookRepository()
+    private val googleBooksRepository = GoogleBooksRepository()
 
     private var allBooks = listOf<Book>()
+    private var googleBooks = listOf<Book>()
+    private var isGoogleBooksMode = false
+
+    private val TAG = "HomeActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate the layout using View Binding
+
         binding = HomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupRecyclerView()
         setupClickListeners()
+
+        // Request notification permission for Android 13+
+        NotificationPermissionHelper.requestNotificationPermission(this)
+
+        // Initialize FCM if not already done
+        FCMHelper.initializeFCM(this)
+
+        val prefs = getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE)
+        val userId = prefs.getString(Constants.KEY_USER_ID, null)
+        if (userId != null) {
+            // REGULAR startService() - NOT startForegroundService()
+            val intent = Intent(this, NotificationListenerService::class.java)
+            intent.putExtra("USER_ID", userId)
+            startService(intent)  // Changed startForegroundService
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        // Reload user data and books every time the user returns to this activity
         loadUserData()
-        loadBooks()
+        if (!isGoogleBooksMode) {
+            loadBooks()
+        }
     }
 
+
+
     private fun setupRecyclerView() {
-        bookAdapter = BookAdapter(emptyList()) { book ->
+        bookAdapter = BookAdapter(emptyList(), { book ->
             openBookDetail(book)
-        }
+        }, useGridLayout = false)
+
         binding.booksRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@HomeActivity)
             adapter = bookAdapter
-            isNestedScrollingEnabled = false // Important for performance in a ScrollView
+            isNestedScrollingEnabled = false
         }
     }
 
@@ -64,7 +90,11 @@ class HomeActivity : AppCompatActivity() {
         binding.searchBar.setOnEditorActionListener { _, _, _ ->
             val query = binding.searchBar.text.toString().trim()
             if (query.isNotEmpty()) {
-                searchBooks(query)
+                if (isGoogleBooksMode) {
+                    searchGoogleBooks(query)
+                } else {
+                    searchBooks(query)
+                }
             }
             true
         }
@@ -90,30 +120,39 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupCategoryFilters() {
         binding.categoryAll.setOnClickListener {
-            filterBooksByCategory(null)
-            highlightCategory(it) // 'it' refers to the clicked view
+            isGoogleBooksMode = false
+            loadBooks()
+            highlightCategory(it)
         }
+
         binding.categoryTech.setOnClickListener {
+            isGoogleBooksMode = false
             filterBooksByCategory(BookCategory.TECH)
             highlightCategory(it)
         }
+
         binding.categoryLaw.setOnClickListener {
+            isGoogleBooksMode = false
             filterBooksByCategory(BookCategory.LAW)
             highlightCategory(it)
         }
+
         binding.categoryBusiness.setOnClickListener {
+            isGoogleBooksMode = false
             filterBooksByCategory(BookCategory.BUSINESS)
             highlightCategory(it)
         }
+
         binding.categoryScience.setOnClickListener {
+            isGoogleBooksMode = false
             filterBooksByCategory(BookCategory.SCIENCE)
             highlightCategory(it)
         }
+
         binding.categoryGoogleBooks.setOnClickListener {
-            Toast.makeText(this, "Feature coming soon!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, GoogleBooksActivity::class.java))
         }
 
-        // Highlight "All" by default
         highlightCategory(binding.categoryAll)
     }
 
@@ -123,21 +162,19 @@ class HomeActivity : AppCompatActivity() {
             binding.categoryTech,
             binding.categoryLaw,
             binding.categoryBusiness,
-            binding.categoryScience
+            binding.categoryScience,
+            binding.categoryGoogleBooks
         )
 
         categories.forEach { categoryLayout ->
-            // Safely cast child views to prevent crashes
             val imageView = categoryLayout.getChildAt(0) as? ImageView
             val textView = categoryLayout.getChildAt(1) as? TextView
 
             if (categoryLayout.id == selectedView.id) {
-                // Highlight selected category
                 categoryLayout.backgroundTintList = ColorStateList.valueOf(getColor(R.color.orange_primary))
                 imageView?.setColorFilter(getColor(R.color.white))
                 textView?.setTextColor(getColor(R.color.white))
             } else {
-                // Unhighlight other categories
                 categoryLayout.backgroundTintList = ColorStateList.valueOf(getColor(R.color.white))
                 imageView?.clearColorFilter()
                 textView?.setTextColor(getColor(android.R.color.black))
@@ -148,12 +185,16 @@ class HomeActivity : AppCompatActivity() {
     private fun loadUserData() {
         val prefs = getSharedPreferences("BookSwapPrefs", Context.MODE_PRIVATE)
 
-        // Load and display name directly from Firebase Auth as the source of truth
         val user = Firebase.auth.currentUser
         val displayName = user?.displayName
-        binding.greetingText.text = if (!displayName.isNullOrEmpty()) "Hi, $displayName" else "Hi, User"
 
-        // Load and display profile picture from the permanent URL using Glide
+        // Use the localized greeting string
+        val greetingFormat = getString(R.string.greetingText)
+        val name = if (!displayName.isNullOrEmpty()) displayName else "User"
+        binding.greetingText.text = String.format(greetingFormat, name)
+
+        Log.d(TAG, "Greeting text set to: ${binding.greetingText.text}")
+
         val urlString = prefs.getString("profile_image_url", null)
         if (urlString != null) {
             Glide.with(this)
@@ -162,23 +203,48 @@ class HomeActivity : AppCompatActivity() {
                 .error(R.drawable.baseline_person_3_24)
                 .into(binding.avatarIcon)
         } else {
-            binding.avatarIcon.setImageResource(R.drawable.baseline_person_3_24) // Default icon
+            binding.avatarIcon.setImageResource(R.drawable.baseline_person_3_24)
         }
     }
-
 
     private fun loadBooks() {
         showLoading(true)
         lifecycleScope.launch {
+            Log.d(TAG, "Starting to load books...")
+
             when (val result = bookRepository.getAllBooks(limit = 50)) {
                 is Result.Success -> {
+                    Log.d(TAG, "Books loaded: ${result.data.size}")
+                    result.data.forEach { book ->
+                        Log.d(TAG, "Book: ${book.title}, Status: ${book.status}")
+                    }
                     allBooks = result.data
                     displayBooks(allBooks)
                 }
                 is Result.Error -> {
+                    Log.e(TAG, "Error loading books", result.exception)
                     allBooks = emptyList()
-                    displayBooks(emptyList()) // Show empty state
-                    Toast.makeText(this@HomeActivity, "Failed to load books.", Toast.LENGTH_SHORT).show()
+                    displayBooks(emptyList())
+                    Toast.makeText(this@HomeActivity, getString(R.string.error_generic), Toast.LENGTH_SHORT).show()
+                }
+                is Result.Loading -> {}
+            }
+            showLoading(false)
+        }
+    }
+
+    private fun loadGoogleBooks() {
+        showLoading(true)
+        lifecycleScope.launch {
+            when (val result = googleBooksRepository.searchBooks("")) {
+                is Result.Success -> {
+                    googleBooks = result.data
+                    displayBooks(googleBooks)
+                }
+                is Result.Error -> {
+                    googleBooks = emptyList()
+                    displayBooks(emptyList())
+                    Toast.makeText(this@HomeActivity, getString(R.string.error_generic), Toast.LENGTH_SHORT).show()
                 }
                 is Result.Loading -> {}
             }
@@ -197,12 +263,30 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun filterBooksByCategory(category: BookCategory?) {
-        val filtered = if (category == null) {
-            allBooks
-        } else {
-            allBooks.filter { it.category == category }
+    private fun searchGoogleBooks(query: String) {
+        showLoading(true)
+        lifecycleScope.launch {
+            when (val result = googleBooksRepository.searchBooks(query)) {
+                is Result.Success -> {
+                    googleBooks = result.data
+                    displayBooks(googleBooks)
+                    if (googleBooks.isEmpty()) {
+                        Toast.makeText(this@HomeActivity, "No Google Books found for '$query'", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                is Result.Error -> {
+                    googleBooks = emptyList()
+                    displayBooks(emptyList())
+                    Toast.makeText(this@HomeActivity, getString(R.string.error_generic), Toast.LENGTH_SHORT).show()
+                }
+                is Result.Loading -> {}
+            }
+            showLoading(false)
         }
+    }
+
+    private fun filterBooksByCategory(category: BookCategory) {
+        val filtered = allBooks.filter { it.category == category }
         displayBooks(filtered)
     }
 
@@ -228,4 +312,3 @@ class HomeActivity : AppCompatActivity() {
         binding.booksRecyclerView.visibility = if (show) View.GONE else View.VISIBLE
     }
 }
-

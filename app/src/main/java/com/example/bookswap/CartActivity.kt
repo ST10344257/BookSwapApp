@@ -16,21 +16,19 @@ import com.example.bookswap.data.models.CartItem
 import com.example.bookswap.data.models.Transaction
 import com.example.bookswap.data.models.TransactionStatus
 import com.example.bookswap.data.models.PaymentMethod
-import com.example.bookswap.data.repository.CartRepository
-import com.example.bookswap.data.repository.TransactionRepository
-import com.example.bookswap.data.repository.UserRepository
 import com.example.bookswap.databinding.ActivityCartBinding
 import com.example.bookswap.utils.Constants
+import com.example.bookswap.utils.ConnectivityObserver
 import com.example.bookswap.utils.PriceUtils
 import kotlinx.coroutines.launch
 
 class CartActivity : AppCompatActivity() {
 
-    // Use View Binding
     private lateinit var binding: ActivityCartBinding
     private lateinit var cartAdapter: CartItemAdapter
     private var cartItems = mutableListOf<CartItem>()
     private var userId: String? = null
+    private var isOnline = true
 
     private val cartRepository = FirebaseModule.cartRepository
     private val transactionRepository = FirebaseModule.transactionRepository
@@ -38,7 +36,6 @@ class CartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate the layout using View Binding
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -47,7 +44,26 @@ class CartActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupClickListeners()
+        observeConnectivity()
         loadCart()
+    }
+
+    // Observe connectivity
+    private fun observeConnectivity() {
+        lifecycleScope.launch {
+            ConnectivityObserver.observeConnectivity(this@CartActivity).collect { online ->
+                isOnline = online
+                updateOfflineBanner()
+                updateCheckoutButton()
+            }
+        }
+    }
+
+    // Show/hide offline banner
+    private fun updateOfflineBanner() {
+        // You can add an offline banner to your layout
+        // For now, we'll just update the checkout button
+        android.util.Log.d("CartActivity", "Network status: ${if (isOnline) "Online" else "Offline"}")
     }
 
     private fun setupRecyclerView() {
@@ -67,12 +83,17 @@ class CartActivity : AppCompatActivity() {
         }
 
         binding.btnCheckout.setOnClickListener {
-            // Initial listener, will be updated in updateTotals()
             handleCheckout()
         }
     }
 
-    private fun handleCheckout(){
+    private fun handleCheckout() {
+        // CHECK IF ONLINE BEFORE CHECKOUT
+        if (!isOnline) {
+            showOfflineCheckoutDialog()
+            return
+        }
+
         if (cartItems.isEmpty()) {
             Toast.makeText(this, "Cart is empty", Toast.LENGTH_SHORT).show()
             return
@@ -87,6 +108,28 @@ class CartActivity : AppCompatActivity() {
         }
     }
 
+    // Show dialog when trying to checkout offline
+    private fun showOfflineCheckoutDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("📵 You're Offline")
+            .setMessage(
+                "Checkout requires an internet connection.\n\n" +
+                        "Your cart is saved and will be available when you're back online."
+            )
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
+    // Update checkout button based on connectivity
+    private fun updateCheckoutButton() {
+        if (!isOnline) {
+            binding.btnCheckout.text = "Checkout (Requires Internet)"
+            binding.btnCheckout.alpha = 0.6f
+        } else {
+            binding.btnCheckout.text = "Proceed to Checkout"
+            binding.btnCheckout.alpha = 1.0f
+        }
+    }
 
     private fun loadCart() {
         if (userId == null) {
@@ -101,10 +144,32 @@ class CartActivity : AppCompatActivity() {
                     cartItems = result.data.toMutableList()
                     checkItemAvailability()
                     updateUI()
+
+                    // ✅ Show message if loaded from cache
+                    if (!isOnline && cartItems.isNotEmpty()) {
+                        Toast.makeText(
+                            this@CartActivity,
+                            "📵 Loaded from offline cache",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 is Result.Error -> {
                     showEmptyCart(true)
-                    Toast.makeText(this@CartActivity, "Failed to load cart", Toast.LENGTH_SHORT).show()
+
+                    if (!isOnline) {
+                        Toast.makeText(
+                            this@CartActivity,
+                            "📵 Offline - No cached cart data",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        Toast.makeText(
+                            this@CartActivity,
+                            "Failed to load cart",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 else -> {}
             }
@@ -127,6 +192,7 @@ class CartActivity : AppCompatActivity() {
             updateTotals()
         }
         binding.cartCount.text = cartItems.size.toString()
+        updateCheckoutButton()
     }
 
     private fun updateTotals() {
@@ -141,7 +207,7 @@ class CartActivity : AppCompatActivity() {
             binding.btnCheckout.text = "Remove Unavailable Items"
             binding.btnCheckout.setOnClickListener { removeUnavailableItems() }
         } else {
-            binding.btnCheckout.text = "Proceed to Checkout"
+            updateCheckoutButton()
             binding.btnCheckout.setOnClickListener { handleCheckout() }
         }
     }
@@ -155,18 +221,31 @@ class CartActivity : AppCompatActivity() {
     private fun removeFromCart(cartItem: CartItem, position: Int) {
         if (userId == null) return
         val bookTitle = cartItem.book?.title ?: "this item"
+
         AlertDialog.Builder(this)
             .setTitle("Remove from Cart")
-            .setMessage("Remove $bookTitle from your cart?")
+            .setMessage("Remove $bookTitle from your cart?${if (!isOnline) "\n\n(Will sync when online)" else ""}")
             .setPositiveButton("Remove") { _, _ ->
                 lifecycleScope.launch {
                     when (cartRepository.removeFromCart(userId!!, cartItem.bookId)) {
                         is Result.Success -> {
                             cartItems.removeAt(position)
-                            updateUI() // Recalculate everything
-                            Toast.makeText(this@CartActivity, "Removed from cart", Toast.LENGTH_SHORT).show()
+                            updateUI()
+
+                            val message = if (isOnline) {
+                                "Removed from cart"
+                            } else {
+                                "Removed from cart (will sync when online)"
+                            }
+                            Toast.makeText(this@CartActivity, message, Toast.LENGTH_SHORT).show()
                         }
-                        is Result.Error -> Toast.makeText(this@CartActivity, "Failed to remove item", Toast.LENGTH_SHORT).show()
+                        is Result.Error -> {
+                            Toast.makeText(
+                                this@CartActivity,
+                                "Failed to remove item",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                         else -> {}
                     }
                 }
@@ -181,7 +260,6 @@ class CartActivity : AppCompatActivity() {
             .setMessage("Your cart contains $count item(s) that are no longer available. Would you like to remove them and proceed?")
             .setPositiveButton("Remove & Proceed") { _, _ ->
                 removeUnavailableItems {
-                    // This block will execute after items are removed
                     if (cartItems.any { it.isAvailable }) {
                         showCheckoutDialog()
                     }
@@ -198,8 +276,12 @@ class CartActivity : AppCompatActivity() {
             for (item in unavailableItems) {
                 cartRepository.removeFromCart(userId!!, item.bookId)
             }
-            loadCart() // Reload cart from Firestore
-            Toast.makeText(this@CartActivity, "Removed ${unavailableItems.size} unavailable item(s)", Toast.LENGTH_SHORT).show()
+            loadCart()
+            Toast.makeText(
+                this@CartActivity,
+                "Removed ${unavailableItems.size} unavailable item(s)",
+                Toast.LENGTH_SHORT
+            ).show()
             onComplete?.invoke()
         }
     }
@@ -207,6 +289,7 @@ class CartActivity : AppCompatActivity() {
     private fun showCheckoutDialog() {
         val availableItems = cartItems.filter { it.isAvailable }
         val total = availableItems.sumOf { it.book?.price ?: 0.0 }
+
         AlertDialog.Builder(this)
             .setTitle("Confirm Purchase")
             .setMessage("Complete purchase of ${availableItems.size} book(s) for ${PriceUtils.formatPrice(total)}?")
@@ -220,6 +303,13 @@ class CartActivity : AppCompatActivity() {
             Toast.makeText(this, "Please login first", Toast.LENGTH_SHORT).show()
             return
         }
+
+        // Double-checking online status
+        if (!ConnectivityObserver.isOnline(this)) {
+            showOfflineCheckoutDialog()
+            return
+        }
+
         binding.btnCheckout.isEnabled = false
         binding.btnCheckout.text = "Processing..."
 
@@ -250,17 +340,31 @@ class CartActivity : AppCompatActivity() {
                     }
 
                     if (successCount > 0) {
-                        Toast.makeText(this@CartActivity, "Purchase successful! Track your orders in profile.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@CartActivity,
+                            "Purchase successful! Track your orders in profile.",
+                            Toast.LENGTH_LONG
+                        ).show()
                         finish()
                     } else {
-                        Toast.makeText(this@CartActivity, "Purchase failed. Please try again.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this@CartActivity,
+                            "Purchase failed. Please try again.",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
-                is Result.Error -> Toast.makeText(this@CartActivity, "Failed to load user info", Toast.LENGTH_SHORT).show()
+                is Result.Error -> {
+                    Toast.makeText(
+                        this@CartActivity,
+                        "Failed to load user info",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 else -> {}
             }
             binding.btnCheckout.isEnabled = true
-            binding.btnCheckout.text = "Proceed to Checkout"
+            updateCheckoutButton()
         }
     }
 
@@ -269,4 +373,3 @@ class CartActivity : AppCompatActivity() {
         loadCart()
     }
 }
-

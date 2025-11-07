@@ -7,11 +7,14 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 
 /**
  * WelcomeActivity - entrance animations and "next" arrow to InsightActivity.
  */
 class WelcomeActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

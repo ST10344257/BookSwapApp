@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Book Image -->
+            <ImageView
+                android:id="@+id/bookImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:background="#F5F5F5"
+                android:contentDescription="Book Cover"
+                tools:src="@drawable/books_svgrepo_com" />
+
+            <!-- Book Title -->
+            <TextView
+                android:id="@+id/bookTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:minHeight="44dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:text="Project Management" />
+
+            <!-- Book Author -->
+            <TextView
+                android:id="@+id/bookAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="#666666"
+                android:textSize="14sp"
+                tools:text="Jack Gido" />
+
+            <!-- Google Books Badge -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_edttext"
+                android:backgroundTint="#E3F2FD"
+                android:padding="6dp"
+                android:text="Google Books"
+                android:textColor="#1976D2"
+                android:textSize="11sp" />
+
+            <!-- Price -->
+            <TextView
+                android:id="@+id/bookPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="#FF8379"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="View on Google" />
+
+        </LinearLayout>
+
+        <!-- Remove Button (Heart Icon) -->
+        <ImageView
+            android:id="@+id/btnRemoveFromWishlist"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="#FFFFFF"
+            android:padding="8dp"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#FF8379"
+            android:contentDescription="Remove from wishlist" />
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

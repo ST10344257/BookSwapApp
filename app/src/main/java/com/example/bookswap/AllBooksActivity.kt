@@ -1,11 +1,15 @@
 package com.example.bookswap
 
+import android.content.Context
+import android.content.Intent
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bookswap.adapters.BookAdapter
 import com.example.bookswap.data.Result
 import com.example.bookswap.data.models.BookCategory
@@ -13,7 +17,6 @@ import com.example.bookswap.data.repository.BookRepository
 import com.example.bookswap.databinding.ActivityAllBooksBinding
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
-import android.content.Intent
 
 class AllBooksActivity : AppCompatActivity() {
 
@@ -30,6 +33,8 @@ class AllBooksActivity : AppCompatActivity() {
         "Science" to BookCategory.SCIENCE
     )
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllBooksBinding.inflate(layoutInflater)
@@ -41,16 +46,31 @@ class AllBooksActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        bookAdapter = BookAdapter(emptyList()) { book ->
-            // Handle book click
+        bookAdapter = BookAdapter(emptyList(), { book ->
             val intent = Intent(this, BookDetailActivity::class.java).apply {
                 putExtra("BOOK", book)
             }
             startActivity(intent)
-        }
+        }, useGridLayout = true) // ✅ Use grid layout for AllBooksActivity
+
         binding.booksRecyclerView.apply {
-            layoutManager = GridLayoutManager(this@AllBooksActivity, 2) // 2 columns grid
+            layoutManager = GridLayoutManager(this@AllBooksActivity, 2) // 2 columns
             adapter = bookAdapter
+
+            // Add spacing between grid items
+            addItemDecoration(object : RecyclerView.ItemDecoration() {
+                override fun getItemOffsets(
+                    outRect: Rect,
+                    view: View,
+                    parent: RecyclerView,
+                    state: RecyclerView.State
+                ) {
+                    outRect.left = 8
+                    outRect.right = 8
+                    outRect.top = 8
+                    outRect.bottom = 8
+                }
+            })
         }
     }
 
@@ -90,9 +110,22 @@ class AllBooksActivity : AppCompatActivity() {
             when (result) {
                 is Result.Success -> {
                     bookAdapter.updateBooks(result.data)
+
+                    // ✅ Show message if no books found
+                    if (result.data.isEmpty()) {
+                        Toast.makeText(
+                            this@AllBooksActivity,
+                            "No books found in this category",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 is Result.Error -> {
-                    Toast.makeText(this@AllBooksActivity, "Failed to load books.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@AllBooksActivity,
+                        "Failed to load books.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 is Result.Loading -> {}
             }
@@ -105,4 +138,3 @@ class AllBooksActivity : AppCompatActivity() {
         binding.booksRecyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE
     }
 }
-

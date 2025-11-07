@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.example.bookswap.R
 import com.example.bookswap.data.models.BookStatus
 import com.example.bookswap.data.models.CartItem
-import com.example.bookswap.utils.PriceUtils
 
 class CartItemAdapter(
     private var cartItems: MutableList<CartItem>,
@@ -28,6 +27,27 @@ class CartItemAdapter(
         fun bind(cartItem: CartItem, position: Int) {
             val book = cartItem.book
 
+            // This now checks for Google Book images (imageUrl) and
+            // user-uploaded images (photoUrls)
+            val imageUrl = when {
+                book?.imageUrl?.isNotEmpty() == true -> book.imageUrl   // Google Book image
+                book?.photoUrls?.isNotEmpty() == true -> book.photoUrls[0] // User-uploaded image
+                else -> null                                          // No image
+            }
+
+            // Load the image with Glide
+            if (imageUrl != null) {
+                Glide.with(itemView.context)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.books_svgrepo_com)
+                    .error(R.drawable.books_svgrepo_com)
+                    .centerCrop()
+                    .into(bookImage)
+            } else {
+                // Set placeholder if no image URL is found
+                bookImage.setImageResource(R.drawable.books_svgrepo_com)
+            }
+
             if (book == null || book.status != BookStatus.AVAILABLE) {
                 // Item is unavailable
                 bookTitle.text = book?.title ?: "Item unavailable"
@@ -38,34 +58,16 @@ class CartItemAdapter(
                 // Fade out the item
                 itemView.alpha = 0.5f
 
-                if (book != null) {
-                    if (book.photoUrls.isNotEmpty()) {
-                        Glide.with(itemView.context)
-                            .load(book.photoUrls[0])
-                            .placeholder(R.drawable.books_svgrepo_com)
-                            .centerCrop()
-                            .into(bookImage)
-                    }
-                } else {
-                    bookImage.setImageResource(R.drawable.books_svgrepo_com)
-                }
             } else {
                 // Item is available
                 itemView.alpha = 1.0f
                 bookTitle.text = book.title
                 bookAuthor.text = book.author
-                bookPrice.text = PriceUtils.formatPrice(book.price)
-                bookPrice.setTextColor(itemView.context.getColor(R.color.orange_primary))
 
-                if (book.photoUrls.isNotEmpty()) {
-                    Glide.with(itemView.context)
-                        .load(book.photoUrls[0])
-                        .placeholder(R.drawable.books_svgrepo_com)
-                        .centerCrop()
-                        .into(bookImage)
-                } else {
-                    bookImage.setImageResource(R.drawable.books_svgrepo_com)
-                }
+                // ✅ FIXED - Format price as String
+                bookPrice.text = "R%.2f".format(book.price)
+
+                bookPrice.setTextColor(itemView.context.getColor(R.color.orange_primary))
             }
 
             btnRemove.setOnClickListener {

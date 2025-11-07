@@ -13,12 +13,12 @@ import com.google.firebase.auth.auth
 
 class ProfileActivity : AppCompatActivity() {
 
-    // Use ProfilePageBinding to match your XML file name
     private lateinit var binding: ProfilePageBinding
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Inflate the layout using View Binding for profile_page.xml
         binding = ProfilePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -28,7 +28,6 @@ class ProfileActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // --- Top Bar ---
         binding.btnback.setOnClickListener {
-            // Go back to the homepage
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
@@ -43,13 +42,13 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.password.setOnClickListener {
-            // This will open your existing PasswordChangeActivity
             startActivity(Intent(this, PasswordChangeActivity::class.java))
         }
 
         binding.books.setOnClickListener {
             startActivity(Intent(this, BooksForSaleActivity::class.java))
         }
+
         // --- Wallet/Account Buttons ---
         binding.btnsell.setOnClickListener {
             startActivity(Intent(this, AddBookActivity::class.java))
@@ -57,6 +56,24 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.btnaccount.setOnClickListener {
             Toast.makeText(this, "My Account details coming soon!", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.wishlist.setOnClickListener {
+            startActivity(Intent(this, WishlistActivity::class.java))
+        }
+
+        binding.googleBooks.setOnClickListener {
+            startActivity(Intent(this, GoogleBooksActivity::class.java))
+        }
+
+        // --- Language Selection ---
+        binding.languageIcon.setOnClickListener {
+            startActivity(Intent(this, LanguageSelectionActivity::class.java))
+        }
+
+        // --- Notification Settings ---
+        binding.notificationSettingsIcon.setOnClickListener {
+            startActivity(Intent(this, NotificationSettingsActivity::class.java))
         }
 
         // --- Logout Button ---
@@ -67,23 +84,18 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showLogoutConfirmation() {
         AlertDialog.Builder(this)
-            .setTitle("Logout")
-            .setMessage("Are you sure you want to log out?")
-            .setPositiveButton("Logout") { _, _ ->
+            .setTitle(getString(R.string.profile_logout))
+            .setMessage(getString(R.string.profile_logout_confirm_message))
+            .setPositiveButton(getString(R.string.profile_logout)) { _, _ ->
                 performLogout()
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(getString(R.string.button_cancel), null)
             .show()
     }
 
     private fun performLogout() {
         // Sign out from Firebase
         Firebase.auth.signOut()
-
-        // Clear any local user data you might have saved in SharedPreferences
-        // Example:
-        // val prefs = getSharedPreferences("BookSwapPrefs", Context.MODE_PRIVATE)
-        // prefs.edit().clear().apply()
 
         Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
@@ -94,4 +106,3 @@ class ProfileActivity : AppCompatActivity() {
         finish()
     }
 }
-

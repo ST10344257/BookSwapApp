@@ -41,24 +41,18 @@ android {
     }
 }
 
+// All dependencies are now in a single, organized block.
 dependencies {
 
     // --- CORE ANDROID & UI ---
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.ktx) // Use the version from libs
     implementation(libs.androidx.appcompat)
-    implementation(libs.material) // KEEP this one, remove the duplicate
+    implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.viewpager2)
-
-    // --- TESTING ---
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
-    // --- CIRCLE IMAGE VIEW ---
     implementation("de.hdodenhof:circleimageview:3.1.0")
 
     // --- ACTIVITY, FRAGMENT, LIFECYCLE (KTX) ---
@@ -66,20 +60,28 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation("androidx.work:work-runtime-ktx:2.9.0") // For background tasks
 
     // --- COROUTINES ---
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.play.services)
 
-    // --- FIREBASE (CLEANED UP & UNIFIED) ---
-    // Define the BoM platform ONLY ONCE using your version catalog
+    // --- FIREBASE ---
+    // Define the BoM platform ONLY ONCE. This manages all Firebase dependency versions.
     implementation(platform(libs.firebase.bom))
 
-    // Now add the individual SDKs you need. The BoM handles their versions.
+    // Now add the individual SDKs you need without specifying versions.
     implementation(libs.firebase.analytics.ktx)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.storage.ktx)
+    implementation("com.google.firebase:firebase-messaging") // For push notifications
+    implementation("com.google.android.gms:play-services-auth:21.4.0") // For Google Sign-In
+
+    // --- NETWORKING (Retrofit) ---
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0") // Useful for debugging
 
     // --- IMAGE LOADING ---
     implementation(libs.glide)
@@ -88,5 +90,8 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.imagepicker)
 
-    // DELETED all the redundant, hardcoded Firebase and Material dependencies.
+    // --- TESTING ---
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

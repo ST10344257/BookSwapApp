@@ -1,6 +1,6 @@
 package com.example.bookswap.data.repository
 
-import com.example.bookswap.FirebaseModule // <-- IMPORT THE SHARED MODULE
+import com.example.bookswap.FirebaseModule
 import com.example.bookswap.data.Result
 import com.example.bookswap.data.models.BookStatus
 import com.example.bookswap.data.models.Transaction
@@ -12,8 +12,7 @@ import kotlinx.coroutines.tasks.await
 
 class TransactionRepository {
 
-    // --- THIS IS THE FIX ---
-    // Use the single, shared instances from FirebaseModule.
+    // single shared instances from FirebaseModule.
     // This ensures this repository has the correct authentication state and uses the same
     // instances of other repositories.
     private val firestore = FirebaseModule.firestore
@@ -41,9 +40,46 @@ class TransactionRepository {
                 firestoreTransaction.update(bookRef, "status", BookStatus.PENDING.name)
             }.await()
 
+            sendBookSoldNotificationToSeller(transaction)
+
             Result.Success(transactionId)
         } catch (e: Exception) {
             Result.Error(e)
+        }
+    }
+
+    private suspend fun sendBookSoldNotificationToSeller(transaction: Transaction) {
+        try {
+            // seller's FCM token from Firestore
+            val sellerDoc = firestore.collection(Constants.USERS_COLLECTION)
+                .document(transaction.sellerId)
+                .get()
+                .await()
+
+            val sellerFcmToken = sellerDoc.getString("fcmToken")
+
+            // notification document in Firestore (for in-app notifications)
+            val notificationData = hashMapOf(
+                "userId" to transaction.sellerId,
+                "title" to "🎉 Your Book Has Been Bought!",
+                "message" to "${transaction.buyerName} purchased your book: ${transaction.bookTitle}",
+                "type" to "BOOK_SOLD",
+                "relatedId" to transaction.bookId,
+                "isRead" to false,
+                "createdAt" to System.currentTimeMillis()
+            )
+
+            firestore.collection("notifications")
+                .add(notificationData)
+                .await()
+
+            android.util.Log.d("Transaction", "Notification created for seller ${transaction.sellerId}")
+
+            // Note: Without Cloud Functions, we can't send push notifications directly from Android
+            // But we can create a local notification if the seller is currently using the app
+
+        } catch (e: Exception) {
+            android.util.Log.e("Transaction", "Error sending notification: ${e.message}", e)
         }
     }
 

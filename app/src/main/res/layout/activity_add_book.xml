@@ -31,7 +31,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="List a Book"
+                android:text="@string/add_book_title"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -63,7 +63,7 @@
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#54977A"
                 android:fontFamily="@font/rubik_medium"
-                android:text="Add Images"
+                android:text="@string/button_add_photos"
                 android:textSize="16sp"
                 app:cornerRadius="8dp" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Title"
+                android:text="@string/book_title"
                 android:textSize="18sp" />
 
             <EditText
@@ -83,7 +83,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
-                android:hint="Enter book title"
+                android:hint="@string/book_title_hint"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Author"
+                android:text="@string/book_author"
                 android:textSize="18sp" />
 
             <EditText
@@ -104,7 +104,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
-                android:hint="Enter author name"
+                android:hint="@string/book_author_hint"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -150,7 +150,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/rounded_edttext"
                     android:fontFamily="@font/rubik"
-                    android:hint="Enter ISBN number"
+                    android:hint="@string/book_isbn_hint"
                     android:inputType="number"
                     android:padding="12dp"
                     android:textSize="16sp" />
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Edition"
+                android:text="@string/book_edition"
                 android:textSize="18sp" />
 
             <EditText
@@ -172,7 +172,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
-                android:hint="e.g., 1st, 2nd, 3rd"
+                android:hint="@string/book_edition_hint"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Course Code"
+                android:text="@string/book_course_code"
                 android:textSize="18sp" />
 
             <EditText
@@ -193,7 +193,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
-                android:hint="e.g., CS101"
+                android:hint="@string/book_course_code_hint"
                 android:inputType="text"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -204,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Category"
+                android:text="@string/book_category_label"
                 android:textSize="18sp" />
 
             <Spinner
@@ -221,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Price (R)"
+                android:text="@string/book_price"
                 android:textSize="18sp" />
 
             <EditText
@@ -231,7 +231,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
-                android:hint="Enter price"
+                android:hint="@string/book_price_hint"
                 android:inputType="numberDecimal"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -242,7 +242,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Condition"
+                android:text="@string/book_condition_label"
                 android:textSize="18sp" />
 
             <Spinner
@@ -259,7 +259,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Description (Optional)"
+                android:text="@string/book_description_label"
                 android:textSize="18sp" />
 
             <EditText
@@ -270,7 +270,7 @@
                 android:background="@drawable/rounded_edttext"
                 android:fontFamily="@font/rubik"
                 android:gravity="top|start"
-                android:hint="Describe the book's condition, highlights, notes, etc."
+                android:hint="@string/book_description_hint"
                 android:inputType="textMultiLine"
                 android:padding="12dp"
                 android:textSize="16sp" />
@@ -284,7 +284,7 @@
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="#FF8379"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="List Book"
+                android:text="@string/button_list_book"
                 android:textSize="20sp"
                 app:cornerRadius="10dp" />
 

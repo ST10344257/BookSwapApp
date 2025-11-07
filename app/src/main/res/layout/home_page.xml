@@ -46,7 +46,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/rubik_bold"
                         android:paddingStart="16dp"
-                        android:text="Hi, User"
+                        android:text="@string/greetingText"
                         android:textColor="@color/black"
                         android:textSize="24sp" />
 
@@ -87,7 +87,7 @@
                             android:layout_weight="1"
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/rubik_medium"
-                            android:hint="Search for books..."
+                            android:hint="@string/home_search_hint"
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:paddingStart="12dp"
@@ -134,7 +134,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="All"
+                                android:text="@string/all"
                                 android:textColor="@color/white"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -166,7 +166,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="Tech"
+                                android:text="@string/category_tech"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -197,7 +197,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="Law"
+                                android:text="@string/category_law"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -228,7 +228,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="Business"
+                                android:text="@string/category_business"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -259,14 +259,16 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="Science"
+                                android:text="@string/category_science"
                                 android:textSize="14sp" />
                         </LinearLayout>
+
 
                         <Space
                             android:layout_width="12dp"
                             android:layout_height="wrap_content" />
 
+                        <!-- Google Books Category -->
                         <LinearLayout
                             android:id="@+id/categoryGoogleBooks"
                             android:layout_width="wrap_content"
@@ -275,10 +277,7 @@
                             android:backgroundTint="@color/white"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="12dp"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:foreground="?attr/selectableItemBackground">
+                            android:padding="12dp">
 
                             <ImageView
                                 android:id="@+id/icon_google"
@@ -292,7 +291,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="4dp"
                                 android:fontFamily="@font/rubik_medium"
-                                android:text="Google Books"
+                                android:text="@string/category_google_books"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -329,7 +328,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/rubik_bold"
-                    android:text="Available Books"
+                    android:text="@string/home_available_books"
                     android:textSize="20sp" />
 
                 <TextView
@@ -337,7 +336,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_medium"
-                    android:text="View All"
+                    android:text="@string/view_all"
                     android:textColor="#54977A"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -403,7 +402,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rubik_bold"
-                        android:text="💡 Quick Tip"
+                        android:text="@string/quick_tip"
                         android:textSize="18sp" />
 
                     <TextView
@@ -411,7 +410,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/rubik"
-                        android:text="List your old textbooks and help other students save money while earning some cash!"
+                        android:text="@string/quick_tip_info"
                         android:textSize="14sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -439,5 +438,7 @@
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="#FF8379"
         app:tint="@color/white" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

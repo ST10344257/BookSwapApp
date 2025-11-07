@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:fillViewport="true"
+    tools:context=".LanguageSelectionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/profilebg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnback"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="@string/language_selection_title"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <!-- Language Selection Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Info Text -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/rubik"
+                android:text="Choose your preferred language for the app"
+                android:textAlignment="center"
+                android:textColor="#666666"
+                android:textSize="16sp" />
+
+            <!-- Radio Group for Languages -->
+            <RadioGroup
+                android:id="@+id/radioGroupLanguages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp">
+
+                <!-- English -->
+                <RadioButton
+                    android:id="@+id/radioEnglish"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/text_bg"
+                    android:fontFamily="@font/rubik"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/language_english"
+                    android:textSize="18sp" />
+
+                <!-- Afrikaans -->
+                <RadioButton
+                    android:id="@+id/radioAfrikaans"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/text_bg"
+                    android:fontFamily="@font/rubik"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/language_afrikaans"
+                    android:textSize="18sp" />
+
+                <!-- Zulu -->
+                <RadioButton
+                    android:id="@+id/radioZulu"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/text_bg"
+                    android:fontFamily="@font/rubik"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/language_zulu"
+                    android:textSize="18sp" />
+
+                <!-- Setswana -->
+                <RadioButton
+                    android:id="@+id/radioSetswana"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/text_bg"
+                    android:fontFamily="@font/rubik"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="@string/language_setswana"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <!-- Apply Button -->
+            <Button
+                android:id="@+id/btnApplyLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#FF8379"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="@string/button_submit"
+                android:textSize="20sp"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

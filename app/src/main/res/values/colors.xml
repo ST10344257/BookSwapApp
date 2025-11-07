@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange_primary">#FF8379</color>
     <color name="teal_green">#54977A</color>
+
+    <color name="gray_text">#757575</color>
+    <color name="green_success">#2E7D32</color>
+    <color name="light_gray">#F5F5F5</color>
 </resources>

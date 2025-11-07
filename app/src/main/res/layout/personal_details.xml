@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Personal Details"
+                android:text="@string/personal_details_title"
                 android:textSize="24sp" />
         </LinearLayout>
 
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="My Profile Picture"
+                    android:text="@string/personal_details_profile_title"
                     android:textSize="20sp" />
                 <View
                     android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Change Picture" />
+                    android:text="@string/personal_details_change_picture" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Change Username"
+                    android:text="@string/personal_details_username"
                     android:textSize="20sp" />
                 <View
                     android:layout_width="match_parent"
@@ -107,21 +107,21 @@
                     android:id="@+id/tvCurrentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current Name: "
+                    android:text="@string/personal_details_username_title"
                     android:textSize="16sp"/>
                 <EditText
                     android:id="@+id/etNewName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Enter new name" />
+                    android:hint="@string/personal_details_username_hint" />
                 <Button
                     android:id="@+id/btnChangeUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="8dp"
-                    android:text="Change Username" />
+                    android:text="@string/personal_details_username" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Change Email Address"
+                    android:text="@string/personal_details_email_title"
                     android:textSize="20sp" />
                 <View
                     android:layout_width="match_parent"
@@ -155,21 +155,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Your Password (for verification)"
+                    android:hint="@string/personal_details_email_hint"
                     android:inputType="textPassword" />
                 <EditText
                     android:id="@+id/etNewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:hint="New Email Address"
+                    android:hint="@string/personal_details_new_email_hint"
                     android:inputType="textEmailAddress" />
                 <EditText
                     android:id="@+id/etConfirmNewEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:hint="Confirm New Email"
+                    android:hint="@string/personal_details_confirm_email_title"
                     android:inputType="textEmailAddress" />
                 <Button
                     android:id="@+id/btnChangeEmail"
@@ -177,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginTop="8dp"
-                    android:text="Change Email" />
+                    android:text="@string/personal_details_change_email" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>

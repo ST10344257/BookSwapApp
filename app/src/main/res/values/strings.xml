@@ -1,6 +1,194 @@
 <resources>
     <string name="app_name">BookSwap</string>
-    <string name="signuptext"><u>Sign Up</u></string>
-    <string name="logintext"><u>Login</u></string>
+
+    <!-- Welcome / Authentication Screens -->
+    <string name="welcome_title">Welcome to BookSwap</string>
+    <string name="welcome_subtitle">The easiest way to trade, buy, and sell university books.</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="login_link"><u>Login</u></string>
+    <string name="signup_link"><u>Sign Up</u></string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="create_account_prompt">Don\'t have an account?</string>
+    <string name="login_prompt">Already have an account?</string>
+    <string name="register_title">Create Your Account</string>
+
+    <!-- Home Screen -->
+    <string name="greetingText">Hi, %1$s</string>
+    <string name="home_search_hint">Search for books…</string>
+    <string name="home_browse_categories">Browse Categories</string>
+    <string name="home_available_books">Available Books</string>
+    <string name="view_all">View All</string>
+    <string name="all">All</string>
+    <string name="quick_tip">💡 Quick Tip</string>
+    <string name="quick_tip_info">List your old textbooks and help other students save money while earning some cash!</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">My Profile</string>
+    <string name="profile_my_books_for_sale">My Books For Sale</string>
+    <string name="profile_my_orders">Track Orders</string>
+    <string name="profile_personal_details">Personal Details</string>
+    <string name="profile_change_password">Change Password</string>
+    <string name="profile_my_wishlist">My Wishlist ❤️</string>
+    <string name="profile_google_books">Google Books</string>
+    <string name="profile_wallet">My Wallet</string>
+    <string name="profile_sell_books">Sell Books</string>
+    <string name="profile_account">My Account</string>
+    <string name="profile_preference">Payment Preference</string>
+    <string name="profile_account_actions">Account Actions</string>
+    <string name="profile_logout">Logout</string>
+    <string name="profile_logout_confirm_message">Are you sure you want to log out?</string>
+
+
+    <!-- Add/Edit Book Screen -->
+    <string name="add_book_title">List a Book</string>
+    <string name="book_title">Title</string>
+    <string name="book_title_hint">Enter book title</string>
+    <string name="book_author">Author</string>
+    <string name="book_author_hint">Enter author name</string>
+    <string name="book_isbn">ISBN</string>
+    <string name="book_isbn_hint">Enter ISBN number</string>
+    <string name="book_edition">Edition</string>
+    <string name="book_edition_hint">e.g., 1st, 2nd, 3rd</string>
+    <string name="book_course_code">Course Code</string>
+    <string name="book_course_code_hint">e.g., CS101</string>
+    <string name="book_price">Price (R)</string>
+    <string name="book_price_hint">Enter price</string>
+    <string name="book_description_label">Description (Optional)</string>
+    <string name="book_description_hint">Describe the book\'s condition, highlights, notes, etc.</string>
+    <string name="book_category_label">Category</string>
+    <string name="book_condition_label">Condition</string>
+    <string name="button_list_book">List Book</string>
+    <string name="button_add_photos">Add Images</string>
+    <string name="all_books_title">All Books</string>
+
+    <!-- Book Detail Screen -->
+    <string name="book_detail_heading">Book Details</string>
+    <string name="book_detail_title">Book Title</string>
+    <string name="book_detail_author">by Author Name</string>
+    <string name="book_detail_isbn">ISBN:</string>
+    <string name="book_detail_sold_by">Seller Information</string>
+    <string name="book_detail_course_code">Course Code:</string>
+    <string name="book_detail_contact_seller">Message</string>
+    <string name="book_detail_buy_now">Buy Now</string>
+    <string name="book_detail_description">Description</string>
+    <string name="book_detail_condition">Condition:</string>
+
+    <!-- Cart Screen -->
+    <string name="cart_title">Shopping Cart</string>
+    <string name="cart_empty_message">Your cart is empty. Start browsing to find books!</string>
+    <string name="cart_subtotal">Subtotal:</string>
+    <string name="cart_browse">Browse Books</string>
+    <string name="cart_total">Total:</string>
+    <string name="button_checkout">Proceed to Checkout</string>
+    <string name="button_remove">Remove</string>
+
+    <!-- Books For Sale Screen -->
+    <string name="books_for_sale_title">My Books for Sale</string>
+    <string name="books_for_sale_empty">No books listed for sale yet.</string>
+    <string name="books_for_sale_add_new">List a New Book</string>
+
+    <!-- Change Password Screen -->
+    <string name="change_password_title">Change Password</string>
+    <string name="enter_current_hint">Enter current password</string>
+    <string name="enter_new_hint">Enter new password</string>
+    <string name="confirm_password">Confirm password</string>
+
+    <!-- Personal Details Screen -->
+    <string name="personal_details_title">Personal Details</string>
+    <string name="personal_details_profile_title">My Profile Picture</string>
+    <string name="personal_details_username">Change Username</string>
+    <string name="personal_details_username_title">Current Name:</string>
+    <string name="personal_details_username_hint">Enter new name</string>
+    <string name="personal_details_email_title">Change Email Address</string>
+    <string name="personal_details_email_hint">Your Password (for verification)</string>
+    <string name="personal_details_new_email_hint">New Email Address</string>
+    <string name="personal_details_confirm_email_title">Confirm Email Address</string>
+    <string name="personal_details_change_email">Change Email</string>
+    <string name="personal_details_change_picture">Change Picture</string>
+
+
+    <!-- Track Orders Screen -->
+    <string name="orders_title">Track Orders</string>
+    <string name="orders_heading">Open Orders</string>
+
+    <!-- All Books -->
+    <string name="view_all_books_heading">All Books</string>
+
+    <!-- Wishlist Screen-->
+
+    <string name="wishlist_tip">Your saved Google Books! Click any book to view details and purchase on Google Books website.</string>
+    <string name="wishlist_browse_link">Browse Google Books</string>
+
+    <!-- Google Books Screen -->
+    <string name="google_books_search_hint">Search Google Books...</string>
+    <string name="google_books_purchase_note">📚 Purchase feature is now available on Google</string>
+    <string name="google_books_failed_search">Try a different search term</string>
+
+
+    <!-- General & Common UI -->
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="button_submit">Submit</string>
+    <string name="loading">Loading…</string>
+
+    <!-- Error & Validation Messages -->
+    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_password_too_short">Password must be at least 6 characters</string>
+    <string name="error_passwords_do_not_match">Passwords do not match</string>
+    <string name="error_network_connection">Network error. Please check your connection.</string>
+    <string name="error_generic">An unexpected error occurred. Please try again.</string>
+    <string name="error_login_failed">Login failed. Please check your credentials.</string>
+    <string name="error_registration_failed">Registration failed. Please try again later.</string>
+
+    <!-- Book Categories -->
+    <string name="category_tech">Tech</string>
+    <string name="category_law">Law</string>
+    <string name="category_business">Business</string>
+    <string name="category_science">Science</string>
+    <string name="category_humanities">Humanities</string>
+    <string name="category_google_books">Google Books</string>
+    <string name="category_engineering">Engineering</string>
+    <string name="category_medical">Medical</string>
+    <string name="category_other">Other</string>
+
+    <!-- Book Conditions -->
+    <string name="condition_new">Like New</string>
+    <string name="condition_excellent">Excellent</string>
+    <string name="condition_good">Good</string>
+    <string name="condition_fair">Fair</string>
+    <string name="condition_poor">Poor</string>
+
+    <string name="profile_language">Language</string>
+
+    <!-- Language Selection - add this entire section -->
+    <string name="language_selection_title">Choose Language</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_zulu">isiZulu</string>
+    <string name="language_setswana">Setswana</string>
+    <string name="language_changed">Language changed to %1$s</string>
+
+    <!-- Add these to res/values/strings.xml (English) -->
+    <string name="profile_notifications">Notifications</string>
+    <string name="notification_settings_title">Notification Settings</string>
+    <string name="notification_all">All Notifications</string>
+    <string name="notification_all_desc">Enable or disable all notifications</string>
+    <string name="notification_orders">Order Updates</string>
+    <string name="notification_orders_desc">Get notified about order status changes</string>
+    <string name="notification_new_books">New Book Listings</string>
+    <string name="notification_new_books_desc">Get notified when new books are listed</string>
+    <string name="notification_price_drops">Price Drops</string>
+    <string name="notification_price_drops_desc">Get notified about price drops on your wishlist</string>
+    <string name="notification_messages">Messages</string>
+    <string name="notification_messages_desc">Get notified about new messages</string>
+
 
 </resources>

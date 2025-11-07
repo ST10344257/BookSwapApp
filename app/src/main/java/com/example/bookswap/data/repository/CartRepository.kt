@@ -1,11 +1,13 @@
 package com.example.bookswap.data.repository
 
+import android.util.Log
 import com.example.bookswap.data.Result
 import com.example.bookswap.data.models.Book
 import com.example.bookswap.data.models.BookStatus
 import com.example.bookswap.data.models.CartItem
 import com.example.bookswap.utils.Constants
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.tasks.await
 
 class CartRepository {
@@ -58,6 +60,14 @@ class CartRepository {
             }
 
             Result.Success(cartItems)
+        } catch (e: FirebaseFirestoreException) {
+            //offline error specifically
+            if (e.code == FirebaseFirestoreException.Code.UNAVAILABLE) {
+                Log.d("CartRepository", "📵 Offline - returning empty cart (no cache)")
+                Result.Success(emptyList()) // Return empty list when offline with no cache
+            } else {
+                Result.Error(e)
+            }
         } catch (e: Exception) {
             Result.Error(e)
         }
@@ -104,6 +114,14 @@ class CartRepository {
                 .await()
 
             Result.Success(doc.exists())
+        } catch (e: FirebaseFirestoreException) {
+            // Handles offline error - assume NOT in cart when offline
+            if (e.code == FirebaseFirestoreException.Code.UNAVAILABLE) {
+                Log.d("CartRepository", "📵 Offline - assuming item NOT in cart")
+                Result.Success(false) // Safe default: assume not in cart
+            } else {
+                Result.Error(e)
+            }
         } catch (e: Exception) {
             Result.Error(e)
         }

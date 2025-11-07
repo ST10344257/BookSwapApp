@@ -1,0 +1,187 @@
+<resources>
+    <string name="app_name">BookSwap</string>
+
+    <!-- Welcome / Authentication Screens -->
+    <string name="welcome_title">Welkom by BookSwap</string>
+    <string name="welcome_subtitle">Die maklikste manier om universiteitsboeke te ruil, koop en verkoop.</string>
+    <string name="login">Teken Aan</string>
+    <string name="signup">Registreer</string>
+    <string name="login_link"><u>Teken Aan</u></string>
+    <string name="signup_link"><u>Registreer</u></string>
+    <string name="email_hint">E-posadres</string>
+    <string name="password_hint">Wagwoord</string>
+    <string name="confirm_password_hint">Bevestig Wagwoord</string>
+    <string name="full_name_hint">Volle Naam</string>
+    <string name="forgot_password"><u>Wagwoord Vergeet?</u></string>
+    <string name="create_account_prompt">Het jy nie \'n rekening nie?</string>
+    <string name="login_prompt">Het jy reeds \'n rekening?</string>
+    <string name="register_title">Skep Jou Rekening</string>
+
+    <!-- Home Screen -->
+    <string name="greetingText">Hallo, %1$s</string>
+    <string name="home_search_hint">Soek vir boeke…</string>
+    <string name="home_browse_categories">Blaai Kategorieë</string>
+    <string name="home_available_books">Beskikbare Boeke</string>
+    <string name="view_all">Sien Alles</string>
+    <string name="all">Alles</string>
+    <string name="quick_tip">💡 Vinnige Wenk</string>
+    <string name="quick_tip_info">Lys jou ou handboeke en help ander studente om geld te bespaar terwyl jy kontant verdien!</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">My Profiel</string>
+    <string name="profile_my_books_for_sale">My Boeke Te Koop</string>
+    <string name="profile_my_orders">Volg Bestellings</string>
+    <string name="profile_personal_details">Persoonlike Besonderhede</string>
+    <string name="profile_change_password">Verander Wagwoord</string>
+    <string name="profile_my_wishlist">My Verlangslys ❤️</string>
+    <string name="profile_google_books">Google Boeke</string>
+    <string name="profile_wallet">My Beursie</string>
+    <string name="profile_sell_books">Verkoop Boeke</string>
+    <string name="profile_account">My Rekening</string>
+    <string name="profile_preference">Betalingsvoorkeur</string>
+    <string name="profile_account_actions">Rekeningaksies</string>
+    <string name="profile_logout">Teken Uit</string>
+    <string name="profile_logout_confirm_message">Is jy seker jy wil uitteken?</string>
+    <string name="profile_language">Taal</string>
+
+    <!-- Add/Edit Book Screen -->
+    <string name="add_book_title">Lys \'n Boek</string>
+    <string name="book_title">Titel</string>
+    <string name="book_title_hint">Voer boektitel in</string>
+    <string name="book_author">Skrywer</string>
+    <string name="book_author_hint">Voer skrywernaam in</string>
+    <string name="book_isbn">ISBN</string>
+    <string name="book_isbn_hint">Voer ISBN nommer in</string>
+    <string name="book_edition">Uitgawe</string>
+    <string name="book_edition_hint">bv., 1ste, 2de, 3de</string>
+    <string name="book_course_code">Kursuskode</string>
+    <string name="book_course_code_hint">bv., CS101</string>
+    <string name="book_price">Prys (R)</string>
+    <string name="book_price_hint">Voer prys in</string>
+    <string name="book_description_label">Beskrywing (Opsioneel)</string>
+    <string name="book_description_hint">Beskryf die boek se toestand, hoogtepunte, notas, ens.</string>
+    <string name="book_category_label">Kategorie</string>
+    <string name="book_condition_label">Toestand</string>
+    <string name="button_list_book">Lys Boek</string>
+    <string name="button_add_photos">Voeg Beelde By</string>
+    <string name="all_books_title">Alle Boeke</string>
+
+    <!-- Book Detail Screen -->
+    <string name="book_detail_heading">Boekbesonderhede</string>
+    <string name="book_detail_title">Boektitel</string>
+    <string name="book_detail_author">deur Skrywernaam</string>
+    <string name="book_detail_isbn">ISBN:</string>
+    <string name="book_detail_sold_by">Verkooperinligting</string>
+    <string name="book_detail_course_code">Kursuskode:</string>
+    <string name="book_detail_contact_seller">Boodskap</string>
+    <string name="book_detail_buy_now">Koop Nou</string>
+    <string name="book_detail_description">Beskrywing</string>
+    <string name="book_detail_condition">Toestand:</string>
+
+    <!-- Cart Screen -->
+    <string name="cart_title">Winkelmandjie</string>
+    <string name="cart_empty_message">Jou mandjie is leeg. Begin blaai om boeke te vind!</string>
+    <string name="cart_subtotal">Subtotaal:</string>
+    <string name="cart_browse">Blaai Boeke</string>
+    <string name="cart_total">Totaal:</string>
+    <string name="button_checkout">Gaan voort na Betaling</string>
+    <string name="button_remove">Verwyder</string>
+
+    <!-- Books For Sale Screen -->
+    <string name="books_for_sale_title">My Boeke te Koop</string>
+    <string name="books_for_sale_empty">Geen boeke gelys vir verkoop nie.</string>
+    <string name="books_for_sale_add_new">Lys \'n Nuwe Boek</string>
+
+    <!-- Change Password Screen -->
+    <string name="change_password_title">Verander Wagwoord</string>
+    <string name="enter_current_hint">Voer huidige wagwoord in</string>
+    <string name="enter_new_hint">Voer nuwe wagwoord in</string>
+    <string name="confirm_password">Bevestig wagwoord</string>
+
+    <!-- Personal Details Screen -->
+    <string name="personal_details_title">Persoonlike Besonderhede</string>
+    <string name="personal_details_profile_title">My Profielfoto</string>
+    <string name="personal_details_username">Verander Gebruikersnaam</string>
+    <string name="personal_details_username_title">Huidige Naam:</string>
+    <string name="personal_details_username_hint">Voer nuwe naam in</string>
+    <string name="personal_details_email_title">Verander E-posadres</string>
+    <string name="personal_details_email_hint">Jou Wagwoord (vir verifikasie)</string>
+    <string name="personal_details_new_email_hint">Nuwe E-posadres</string>
+    <string name="personal_details_confirm_email_title">Bevestig E-posadres</string>
+    <string name="personal_details_change_email">Verander E-pos</string>
+    <string name="personal_details_change_picture">Verander Prent</string>
+
+    <!-- Track Orders Screen -->
+    <string name="orders_title">Volg Bestellings</string>
+    <string name="orders_heading">Oop Bestellings</string>
+
+    <!-- All Books -->
+    <string name="view_all_books_heading">Alle Boeke</string>
+
+    <!-- Wishlist Screen-->
+    <string name="wishlist_tip">Jou gestoorde Google Boeke! Klik op enige boek om besonderhede te sien en te koop op Google Boeke webwerf.</string>
+    <string name="wishlist_browse_link">Blaai Google Boeke</string>
+
+    <!-- Google Books Screen -->
+    <string name="google_books_search_hint">Soek Google Boeke...</string>
+    <string name="google_books_purchase_note">📚 Koopfunksie is nou beskikbaar op Google</string>
+    <string name="google_books_failed_search">Probeer \'n ander soekterm</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection_title">Kies Taal</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_zulu">isiZulu</string>
+    <string name="language_setswana">Setswana</string>
+    <string name="language_changed">Taal verander na %1$s</string>
+
+    <!-- General & Common UI -->
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Kanselleer</string>
+    <string name="button_yes">Ja</string>
+    <string name="button_no">Nee</string>
+    <string name="button_submit">Dien In</string>
+    <string name="loading">Laai…</string>
+
+    <!-- Error & Validation Messages -->
+    <string name="error_field_required">Hierdie veld is verplig</string>
+    <string name="error_invalid_email">Voer asseblief \'n geldige e-posadres in</string>
+    <string name="error_password_too_short">Wagwoord moet minstens 6 karakters wees</string>
+    <string name="error_passwords_do_not_match">Wagwoorde stem nie ooreen nie</string>
+    <string name="error_network_connection">Netwerkfout. Kontroleer asseblief jou verbinding.</string>
+    <string name="error_generic">\'n Onverwagte fout het plaasgevind. Probeer asseblief weer.</string>
+    <string name="error_login_failed">Aanmelding het misluk. Kontroleer asseblief jou geloofsbriewe.</string>
+    <string name="error_registration_failed">Registrasie het misluk. Probeer asseblief later weer.</string>
+
+    <!-- Book Categories -->
+    <string name="category_tech">Tegnologie</string>
+    <string name="category_law">Reg</string>
+    <string name="category_business">Besigheid</string>
+    <string name="category_science">Wetenskap</string>
+    <string name="category_humanities">Geesteswetenskappe</string>
+    <string name="category_google_books">Google Boeke</string>
+    <string name="category_engineering">Ingenieurswese</string>
+    <string name="category_medical">Mediese</string>
+    <string name="category_other">Ander</string>
+
+    <!-- Book Conditions -->
+    <string name="condition_new">Soos Nuut</string>
+    <string name="condition_excellent">Uitstekend</string>
+    <string name="condition_good">Goed</string>
+    <string name="condition_fair">Redelik</string>
+    <string name="condition_poor">Swak</string>
+
+    <!-- Add these to res/values-af/strings.xml (Afrikaans) -->
+    <string name="profile_notifications">Kennisgewings</string>
+    <string name="notification_settings_title">Kennisgewings Instellings</string>
+    <string name="notification_all">Alle Kennisgewings</string>
+    <string name="notification_all_desc">Aktiveer of deaktiveer alle kennisgewings</string>
+    <string name="notification_orders">Bestellingsopdaterings</string>
+    <string name="notification_orders_desc">Kry kennisgewings oor bestellingstatus veranderinge</string>
+    <string name="notification_new_books">Nuwe Boeklysings</string>
+    <string name="notification_new_books_desc">Kry kennisgewings wanneer nuwe boeke gelys word</string>
+    <string name="notification_price_drops">Prysverlagings</string>
+    <string name="notification_price_drops_desc">Kry kennisgewings oor prysverlagings op jou verlangslys</string>
+    <string name="notification_messages">Boodskappe</string>
+    <string name="notification_messages_desc">Kry kennisgewings oor nuwe boodskappe</string>
+</resources>

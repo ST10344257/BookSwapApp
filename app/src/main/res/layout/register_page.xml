@@ -76,7 +76,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:fontFamily="@font/rubik_semibold"
-                        android:text="@string/logintext"
+                        android:text="@string/login_link"
                         android:textColor="#F56A5D"
                         android:textSize="22dp"
                         android:textStyle="italic" />

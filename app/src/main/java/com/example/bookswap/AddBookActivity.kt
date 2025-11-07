@@ -1,9 +1,12 @@
 package com.example.bookswap
 
+
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,15 +19,19 @@ import com.example.bookswap.data.Result
 import com.example.bookswap.data.models.Book
 import com.example.bookswap.data.models.BookCategory
 import com.example.bookswap.data.models.BookCondition
+import com.example.bookswap.data.models.BookStatus // *** ADDED IMPORT ***
 import com.example.bookswap.data.repository.BookRepository
 import com.example.bookswap.data.repository.UserRepository
 import com.example.bookswap.utils.Constants
+import com.example.bookswap.utils.PriceUtils
 import com.example.bookswap.utils.ValidationUtils
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class AddBookActivity : AppCompatActivity() {
-
+    private val TAG = "AddBookActivity"
     private lateinit var btnBack: ImageView
     private lateinit var btnSelectImages: Button
     private lateinit var selectedImagesRecyclerView: RecyclerView
@@ -74,6 +81,7 @@ class AddBookActivity : AppCompatActivity() {
         setupSpinners()
         setupClickListeners()
     }
+
 
     private fun initViews() {
         btnBack = findViewById(R.id.btnBack)
@@ -130,7 +138,7 @@ class AddBookActivity : AppCompatActivity() {
             }
         }
 
-        // ISBN Help Icon - ADD THIS
+        // ISBN Help Icon
         findViewById<ImageView>(R.id.btnIsbnHelp)?.setOnClickListener {
             showIsbnHelpDialog()
         }
@@ -288,10 +296,13 @@ class AddBookActivity : AppCompatActivity() {
         setLoading(true)
 
         lifecycleScope.launch {
-            // Get user info first
             when (val userResult = userRepository.getUser(userId)) {
                 is Result.Success -> {
                     val user = userResult.data
+
+                    // Convert price string to double
+                    val priceString = edtPrice.text.toString().trim()
+                    val priceDouble = priceString.toDoubleOrNull() ?: 0.0
 
                     val book = Book(
                         sellerId = userId,
@@ -302,18 +313,19 @@ class AddBookActivity : AppCompatActivity() {
                         edition = edtEdition.text.toString().trim(),
                         courseCode = edtCourseCode.text.toString().trim(),
                         category = BookCategory.values()[spinnerCategory.selectedItemPosition],
-                        price = edtPrice.text.toString().toDouble(),
+                        price = priceDouble, // ← Now using Double
                         condition = BookCondition.values()[spinnerCondition.selectedItemPosition],
                         description = edtDescription.text.toString().trim(),
                         institution = user.institution,
-                        location = user.institution
+                        location = user.institution,
+                        status = BookStatus.AVAILABLE
                     )
 
                     when (val result = bookRepository.addBook(book, selectedImages)) {
                         is Result.Success -> {
-                            // Update user's book count
                             userRepository.incrementBookStats(userId, sold = false)
-
+                            //TO NOTIFY USERS ABOUT NEW BOOK LISTING
+                            notifyNewBookListing(book)
                             Toast.makeText(
                                 this@AddBookActivity,
                                 "Book listed successfully!",
@@ -350,4 +362,85 @@ class AddBookActivity : AppCompatActivity() {
         btnSelectImages.isEnabled = !loading
         btnListBook.text = if (loading) "Listing Book..." else "List Book"
     }
+
+
+    private suspend fun notifyNewBookListing(book: Book) {
+        try {
+            // Create notification document in Firestore for all users
+            val notificationData = hashMapOf(
+                "title" to "📚 New Book Available!",
+                "message" to "New ${book.category.name} book: ${book.title} by ${book.author} - ${PriceUtils.formatPrice(book.price)}",
+                "type" to "NEW_BOOK_LISTING",
+                "relatedId" to book.bookId,
+                "category" to book.category.name,
+                "isRead" to false,
+                "createdAt" to System.currentTimeMillis(),
+                "bookTitle" to book.title,
+                "bookPrice" to book.price,
+                "bookCategory" to book.category.name
+            )
+
+            com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                .collection("notifications")
+                .add(notificationData)
+                .await()
+
+            android.util.Log.d("AddBook", "New book notification created")
+
+            // Send local notification to show it's working
+            sendLocalNewBookNotification(book)
+
+        } catch (e: Exception) {
+            android.util.Log.e("AddBook", "Error creating notification: ${e.message}", e)
+        }
+    }
+
+    private fun sendLocalNewBookNotification(book: Book) {
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+        val channelId = "bookswap_channel"
+
+        //  channel if needed
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val channel = android.app.NotificationChannel(
+                channelId,
+                "BookSwap Notifications",
+                android.app.NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "Notifications for book sales and updates"
+                enableLights(true)
+                enableVibration(true)
+            }
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        // intent to open book detail
+        val intent = Intent(this, BookDetailActivity::class.java).apply {
+            putExtra("BOOK", book)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+
+        val pendingIntent = android.app.PendingIntent.getActivity(
+            this,
+            0,
+            intent,
+            android.app.PendingIntent.FLAG_IMMUTABLE or android.app.PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val notification = androidx.core.app.NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.ic_notifications)
+            .setContentTitle("📚 New Book Available!")
+            .setContentText("${book.title} - ${PriceUtils.formatPrice(book.price)}")
+            .setStyle(androidx.core.app.NotificationCompat.BigTextStyle()
+                .bigText("New ${book.category.name} book available!\n\n${book.title} by ${book.author}\nPrice: ${PriceUtils.formatPrice(book.price)}"))
+            .setPriority(androidx.core.app.NotificationCompat.PRIORITY_HIGH)
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
+            .setVibrate(longArrayOf(1000, 1000))
+            .build()
+
+        notificationManager.notify(kotlin.random.Random.nextInt(), notification)
+
+        android.util.Log.d("AddBook", "Local notification sent for new book: ${book.title}")
+    }
+
 }

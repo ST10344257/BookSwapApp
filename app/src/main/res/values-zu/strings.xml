@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">BookSwap</string>
+
+    <!-- Welcome / Authentication Screens -->
+    <string name="welcome_title">Siyakwamukela ku-BookSwap</string>
+    <string name="welcome_subtitle">Indlela elula yokushintshisana, ukuthenga, nokuthengisa izincwadi zasenyuvesi.</string>
+    <string name="login">Ngena Ngemvume</string>
+    <string name="signup">Bhalisa</string>
+    <string name="login_link"><u>Ngena Ngemvume</u></string>
+    <string name="signup_link"><u>Bhalisa</u></string>
+    <string name="email_hint">Ikheli le-imeyili</string>
+    <string name="password_hint">Iphasiwedi</string>
+    <string name="confirm_password_hint">Qinisekisa Iphasiwedi</string>
+    <string name="full_name_hint">Igama Eligcwele</string>
+    <string name="forgot_password"><u>Ukhohlwe Iphasiwedi?</u></string>
+    <string name="create_account_prompt">Awunayo i-akhawunti?</string>
+    <string name="login_prompt">Usunawo i-akhawunti?</string>
+    <string name="register_title">Dala I-akhawunti Yakho</string>
+
+    <!-- Home Screen -->
+    <string name="greetingText">Sawubona, %1$s</string>
+    <string name="home_search_hint">Sesha izincwadi…</string>
+    <string name="home_browse_categories">Bhekisisa Izigaba</string>
+    <string name="home_available_books">Izincwadi Ezitholakalayo</string>
+    <string name="view_all">Buka Konke</string>
+    <string name="all">Konke</string>
+    <string name="quick_tip">💡 Ithiphu Esheshayo</string>
+    <string name="quick_tip_info">Dweba izincwadi zakho zasendulo bese usize abanye abafundi ukonga imali ngenkathi uthola imali!</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Iphrofayela Yami</string>
+    <string name="profile_my_books_for_sale">Izincwadi Zami Zokuthengisa</string>
+    <string name="profile_my_orders">Landelela Ama-oda</string>
+    <string name="profile_personal_details">Imininingwane Yomuntu Siqu</string>
+    <string name="profile_change_password">Shintsha Iphasiwedi</string>
+    <string name="profile_my_wishlist">Uhlu Lwezifiso Zami ❤️</string>
+    <string name="profile_google_books">Izincwadi ze-Google</string>
+    <string name="profile_wallet">Isikhwama Sami</string>
+    <string name="profile_sell_books">Thengisa Izincwadi</string>
+    <string name="profile_account">I-akhawunti Yami</string>
+    <string name="profile_preference">Ukukhetha Inkokhelo</string>
+    <string name="profile_account_actions">Izenzo Ze-akhawunti</string>
+    <string name="profile_logout">Phuma</string>
+    <string name="profile_logout_confirm_message">Uqinisekile ukuthi ufuna ukuphuma?</string>
+    <string name="profile_language">Ulimi</string>
+
+    <!-- Add/Edit Book Screen -->
+    <string name="add_book_title">Dweba Incwadi</string>
+    <string name="book_title">Isihloko</string>
+    <string name="book_title_hint">Faka isihloko sencwadi</string>
+    <string name="book_author">Umbhali</string>
+    <string name="book_author_hint">Faka igama lombhali</string>
+    <string name="book_isbn">I-ISBN</string>
+    <string name="book_isbn_hint">Faka inombolo ye-ISBN</string>
+    <string name="book_edition">Ushicilelo</string>
+    <string name="book_edition_hint">isib., olu-1, olu-2, olu-3</string>
+    <string name="book_course_code">Ikhodi Yekhosi</string>
+    <string name="book_course_code_hint">isib., CS101</string>
+    <string name="book_price">Intengo (R)</string>
+    <string name="book_price_hint">Faka intengo</string>
+    <string name="book_description_label">Incazelo (Ongakhetha)</string>
+    <string name="book_description_hint">Chaza isimo sencwadi, okugqanyisiwe, amanothi, njll.</string>
+    <string name="book_category_label">Isigaba</string>
+    <string name="book_condition_label">Isimo</string>
+    <string name="button_list_book">Dweba Incwadi</string>
+    <string name="button_add_photos">Engeza Izithombe</string>
+    <string name="all_books_title">Zonke Izincwadi</string>
+
+    <!-- Book Detail Screen -->
+    <string name="book_detail_heading">Imininingwane Yencwadi</string>
+    <string name="book_detail_title">Isihloko Sencwadi</string>
+    <string name="book_detail_author">ngu-Igama Lombhali</string>
+    <string name="book_detail_isbn">I-ISBN:</string>
+    <string name="book_detail_sold_by">Ulwazi Lomthengisi</string>
+    <string name="book_detail_course_code">Ikhodi Yekhosi:</string>
+    <string name="book_detail_contact_seller">Umlayezo</string>
+    <string name="book_detail_buy_now">Thenga Manje</string>
+    <string name="book_detail_description">Incazelo</string>
+    <string name="book_detail_condition">Isimo:</string>
+
+    <!-- Cart Screen -->
+    <string name="cart_title">Itroli Yokuthenga</string>
+    <string name="cart_empty_message">Itroli yakho ayinalutho. Qala ukubhekisisa ukuthola izincwadi!</string>
+    <string name="cart_subtotal">Isamba Esincane:</string>
+    <string name="cart_browse">Bhekisisa Izincwadi</string>
+    <string name="cart_total">Isamba:</string>
+    <string name="button_checkout">Qhubeka Nokukhokha</string>
+    <string name="button_remove">Susa</string>
+
+    <!-- Books For Sale Screen -->
+    <string name="books_for_sale_title">Izincwadi Zami Zokuthengisa</string>
+    <string name="books_for_sale_empty">Azikho izincwadi ezidwetshiwe ukuthengiswa okwamanje.</string>
+    <string name="books_for_sale_add_new">Dweba Incwadi Entsha</string>
+
+    <!-- Change Password Screen -->
+    <string name="change_password_title">Shintsha Iphasiwedi</string>
+    <string name="enter_current_hint">Faka iphasiwedi yamanje</string>
+    <string name="enter_new_hint">Faka iphasiwedi entsha</string>
+    <string name="confirm_password">Qinisekisa iphasiwedi</string>
+
+    <!-- Personal Details Screen -->
+    <string name="personal_details_title">Imininingwane Yomuntu Siqu</string>
+    <string name="personal_details_profile_title">Isithombe Sami Sephrofayela</string>
+    <string name="personal_details_username">Shintsha Igama Lomsebenzisi</string>
+    <string name="personal_details_username_title">Igama Lamanje:</string>
+    <string name="personal_details_username_hint">Faka igama elisha</string>
+    <string name="personal_details_email_title">Shintsha Ikheli le-imeyili</string>
+    <string name="personal_details_email_hint">Iphasiwedi Yakho (yokuqinisekisa)</string>
+    <string name="personal_details_new_email_hint">Ikheli Elisha le-imeyili</string>
+    <string name="personal_details_confirm_email_title">Qinisekisa Ikheli le-imeyili</string>
+    <string name="personal_details_change_email">Shintsha i-imeyili</string>
+    <string name="personal_details_change_picture">Shintsha Isithombe</string>
+
+    <!-- Track Orders Screen -->
+    <string name="orders_title">Landelela Ama-oda</string>
+    <string name="orders_heading">Ama-oda Avulekile</string>
+
+    <!-- All Books -->
+    <string name="view_all_books_heading">Zonke Izincwadi</string>
+
+    <!-- Wishlist Screen-->
+    <string name="wishlist_tip">Izincwadi zakho ze-Google ezilondoloziwe! Chofoza noma iyiphi incwadi ukubuka imininingwane futhi uthenga kuwebhusayithi yezincwadi ze-Google.</string>
+    <string name="wishlist_browse_link">Bhekisisa Izincwadi ze-Google</string>
+
+    <!-- Google Books Screen -->
+    <string name="google_books_search_hint">Sesha Izincwadi ze-Google...</string>
+    <string name="google_books_purchase_note">📚 Isici sokuthenga siyatholakala manje ku-Google</string>
+    <string name="google_books_failed_search">Zama igama lokusesha elihlukile</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection_title">Khetha Ulimi</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_zulu">isiZulu</string>
+    <string name="language_setswana">Setswana</string>
+    <string name="language_changed">Ulimi lushintshwe ku-%1$s</string>
+
+    <!-- General & Common UI -->
+    <string name="button_ok">KULUNGILE</string>
+    <string name="button_cancel">Khansela</string>
+    <string name="button_yes">Yebo</string>
+    <string name="button_no">Cha</string>
+    <string name="button_submit">Thumela</string>
+    <string name="loading">Iyalayisha…</string>
+
+    <!-- Error & Validation Messages -->
+    <string name="error_field_required">Le nsimu iyadingeka</string>
+    <string name="error_invalid_email">Sicela ufake ikheli le-imeyili elivumelekile</string>
+    <string name="error_password_too_short">Iphasiwedi kufanele ibe nezinhlamvu okungenani ezi-6</string>
+    <string name="error_passwords_do_not_match">Amaphasiwedi awafani</string>
+    <string name="error_network_connection">Iphutha lenethiwekhi. Sicela uhlole ukuxhumana kwakho.</string>
+    <string name="error_generic">Iphutha elingalindelekile lenzekile. Sicela uzame futhi.</string>
+    <string name="error_login_failed">Ukungena ngemvume kuhlulekile. Sicela uhlole imininingwane yakho yokuqinisekisa.</string>
+    <string name="error_registration_failed">Ukubhalisa kuhlulekile. Sicela uzame kamuva.</string>
+
+    <!-- Book Categories -->
+    <string name="category_tech">Ubuchwepheshe</string>
+    <string name="category_law">Umthetho</string>
+    <string name="category_business">Ibhizinisi</string>
+    <string name="category_science">Isayensi</string>
+    <string name="category_humanities">Ezobuntu</string>
+    <string name="category_google_books">Izincwadi ze-Google</string>
+    <string name="category_engineering">Ubunjiniyela</string>
+    <string name="category_medical">Ezokwelapha</string>
+    <string name="category_other">Okunye</string>
+
+    <!-- Book Conditions -->
+    <string name="condition_new">Njengentsha</string>
+    <string name="condition_excellent">Okuhle Kakhulu</string>
+    <string name="condition_good">Okuhle</string>
+    <string name="condition_fair">Okufanele</string>
+    <string name="condition_poor">Okumpofu</string>
+
+    <!-- Add these to res/values-zu/strings.xml (Zulu) -->
+    <string name="profile_notifications">Izaziso</string>
+    <string name="notification_settings_title">Izilungiselelo Zezaziso</string>
+    <string name="notification_all">Zonke Izaziso</string>
+    <string name="notification_all_desc">Nika amandla noma vimbela zonke izaziso</string>
+    <string name="notification_orders">Izibuyekezo Zama-oda</string>
+    <string name="notification_orders_desc">Thola izaziso ngezinguquko zesimo se-oda</string>
+    <string name="notification_new_books">Izincwadi Ezintsha</string>
+    <string name="notification_new_books_desc">Thola izaziso lapho izincwadi ezintsha zidwetshiwe</string>
+    <string name="notification_price_drops">Ukwehla Kwentengo</string>
+    <string name="notification_price_drops_desc">Thola izaziso mayelana nokwehla kwentengo ohlwini lwakho lwezifiso</string>
+    <string name="notification_messages">Imilayezo</string>
+    <string name="notification_messages_desc">Thola izaziso ngemilayezo emisha</string>
+
+</resources>

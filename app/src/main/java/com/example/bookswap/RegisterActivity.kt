@@ -20,6 +20,8 @@ import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
 
+
+
     private lateinit var edtName: EditText
     private lateinit var edtSurname: EditText
     private lateinit var edtPassword: EditText
@@ -49,12 +51,10 @@ class RegisterActivity : AppCompatActivity() {
         txtLogin = findViewById(R.id.txtlogin)
         edtEmail = findViewById(R.id.edtemail)
 
-        // Find or create signup button - your layout has it in a LinearLayout
-        // You may need to give it an ID if it doesn't have one
-        btnSignup = findViewById(R.id.btnsignup) // Make sure this ID exists in your layout
 
-        // It's better to add the ProgressBar to your XML layout for positioning.
-        // If not, you'll need to add this view to your layout hierarchy manually.
+        btnSignup = findViewById(R.id.btnsignup)
+
+
         progressBar = ProgressBar(this).apply {
             visibility = View.GONE
         }
@@ -184,6 +184,7 @@ class RegisterActivity : AppCompatActivity() {
             putString(Constants.KEY_USER_EMAIL, email)
             apply()
         }
+
     }
 
     private fun setLoading(loading: Boolean) {

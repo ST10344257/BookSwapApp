@@ -4,6 +4,7 @@
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -15,6 +16,7 @@
         android:required="false" />
 
     <application
+        android:name=".BookSwapApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,52 +26,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookSwap"
         tools:targetApi="31">
-
-        <!-- Activity Declarations -->
+        <!-- Notification Settings Activity -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.BookSwap.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".WelcomeActivity" android:theme="@style/Theme.BookSwap.NoActionBar" />
-        <activity android:name=".InsightActivity" android:theme="@style/Theme.BookSwap.NoActionBar" />
-        <activity android:name=".StartPageActivity" android:theme="@style/Theme.BookSwap.NoActionBar" />
-
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.BookSwap.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".RegisterActivity"
-            android:theme="@style/Theme.BookSwap.NoActionBar"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".HomeActivity"
+            android:name=".NotificationSettingsActivity"
             android:exported="false"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/Theme.BookSwap" /> <!-- Language Selection Activity -->
+        <activity
+            android:name=".LanguageSelectionActivity"
+            android:exported="false"
+            android:parentActivityName=".ProfileActivity"
             android:theme="@style/Theme.BookSwap" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="false"
-            android:theme="@style/Theme.BookSwap" />
-        <activity
-            android:name=".BookDetailActivity"
-            android:exported="false"
-            android:parentActivityName=".HomeActivity"
-            android:theme="@style/Theme.BookSwap" />
-        <activity
-            android:name=".AddBookActivity"
-            android:exported="false"
-            android:parentActivityName=".HomeActivity"
-            android:theme="@style/Theme.BookSwap"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".PersonalDetailsActivity"
+            android:exported="false"
+            android:parentActivityName=".ProfileActivity"
+            android:theme="@style/Theme.BookSwap" />
+        <activity
+            android:name=".AllBooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WishlistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/Theme.BookSwap" />
+        <activity
+            android:name=".BooksForSaleActivity"
             android:exported="false"
             android:parentActivityName=".ProfileActivity"
             android:theme="@style/Theme.BookSwap" />
@@ -85,22 +70,74 @@
             android:parentActivityName=".ProfileActivity"
             android:theme="@style/Theme.BookSwap" />
         <activity
-            android:name=".CartActivity"
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.BookSwap" />
+        <activity
+            android:name=".AddBookActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/Theme.BookSwap"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".BookDetailActivity"
             android:exported="false"
             android:parentActivityName=".HomeActivity"
             android:theme="@style/Theme.BookSwap" />
         <activity
-            android:name=".AllBooksActivity"
-            android:exported="false" />
-
-        <!-- THIS IS THE FIX: Added the declaration for BooksForSaleActivity -->
-        <activity
-            android:name=".BooksForSaleActivity"
+            android:name=".HomeActivity"
             android:exported="false"
-            android:parentActivityName=".ProfileActivity"
             android:theme="@style/Theme.BookSwap" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BookSwap.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- File Provider for Camera -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:theme="@style/Theme.BookSwap.NoActionBar" />
+        <activity
+            android:name=".InsightActivity"
+            android:theme="@style/Theme.BookSwap.NoActionBar" />
+        <activity
+            android:name=".StartPageActivity"
+            android:theme="@style/Theme.BookSwap.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.BookSwap.NoActionBar"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".GoogleBooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.BookSwap.NoActionBar"
+            android:windowSoftInputMode="adjustResize" /> <!-- Firebase Cloud Messaging Service -->
+        <service android:name=".NotificationListenerService"
+            android:enabled="true"
+            android:exported="false" />
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.messaging.FirebaseMessagingService" /> <!-- <action android:name="com.google.firebase.MESSAGING_EVENT" />Old -->
+            </intent-filter>
+        </service> <!-- Default notification icon and color -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/orange_primary" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="bookswap_notifications" /> <!-- File Provider for Camera -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -1,10 +1,12 @@
 package com.example.bookswap.data.models
 
 import android.os.Parcelable
+import com.google.firebase.firestore.PropertyName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Book(
+    val id: String = "", // Changed from bookId for Google Books compatibility
     val bookId: String = "",
     val sellerId: String = "",
     val sellerName: String = "",
@@ -22,7 +24,16 @@ data class Book(
     val views: Int = 0,
     val listedAt: Long = System.currentTimeMillis(),
     val institution: String = "",
-    val location: String = ""
+    val location: String = "",
+    val ownerId: String = "",
+    val imageUrl: String = "",
+
+    // ✅ Google Books fields - only @get: annotation needed for val properties
+    @get:PropertyName("isGoogleBook")
+    val isGoogleBook: Boolean = false,
+
+    val buyLink: String = "",
+    val publishedDate: String = ""
 ) : Parcelable
 
 enum class BookCategory {

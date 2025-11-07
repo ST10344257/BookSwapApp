@@ -1,0 +1,188 @@
+<resources>
+    <string name="app_name">BookSwap</string>
+
+    <!-- Welcome / Authentication Screens -->
+    <string name="welcome_title">Re a go amogela mo BookSwap</string>
+    <string name="welcome_subtitle">Tsela e bonolo ya go fapantshana, go reka le go rekisa dibuka tsa yunibesithi.</string>
+    <string name="login">Tsena</string>
+    <string name="signup">Ingodise</string>
+    <string name="login_link"><u>Tsena</u></string>
+    <string name="signup_link"><u>Ingodise</u></string>
+    <string name="email_hint">Aterese ya Imeili</string>
+    <string name="password_hint">Phasewete</string>
+    <string name="confirm_password_hint">Tlhomamisa Phasewete</string>
+    <string name="full_name_hint">Leina Gotlhe</string>
+    <string name="forgot_password"><u>O Lebetse Phasewete?</u></string>
+    <string name="create_account_prompt">Ga o na akhaonto?</string>
+    <string name="login_prompt">O sena akhaonto?</string>
+    <string name="register_title">Tlhoma Akhaonto ya Gago</string>
+
+    <!-- Home Screen -->
+    <string name="greetingText">Dumela, %1$s</string>
+    <string name="home_search_hint">Batla dibuka…</string>
+    <string name="home_browse_categories">Bona Dikgaolo</string>
+    <string name="home_available_books">Dibuka Tse di Teng</string>
+    <string name="view_all">Bona Tsotlhe</string>
+    <string name="all">Tsotlhe</string>
+    <string name="quick_tip">💡 Tataiso e Bonako</string>
+    <string name="quick_tip_info">Kwala dibuka tsa gago tsa kgale mme o thuse baithuti ba bangwe go boloka madi fa o ntse o dira madi!</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profaele ya Me</string>
+    <string name="profile_my_books_for_sale">Dibuka Tsa Me Tse di Rekilweng</string>
+    <string name="profile_my_orders">Latela Ditaelo</string>
+    <string name="profile_personal_details">Dintlha Tsa Motho</string>
+    <string name="profile_change_password">Fetola Phasewete</string>
+    <string name="profile_my_wishlist">Lenaneo la Me la Dikeletso ❤️</string>
+    <string name="profile_google_books">Dibuka tsa Google</string>
+    <string name="profile_wallet">Mokotla wa Me</string>
+    <string name="profile_sell_books">Rekisa Dibuka</string>
+    <string name="profile_account">Akhaonto ya Me</string>
+    <string name="profile_preference">Tlhopho ya Tuelo</string>
+    <string name="profile_account_actions">Ditiro tsa Akhaonto</string>
+    <string name="profile_logout">Tswa</string>
+    <string name="profile_logout_confirm_message">A o tlhomamisa gore o batla go tswa?</string>
+    <string name="profile_language">Puo</string>
+
+    <!-- Add/Edit Book Screen -->
+    <string name="add_book_title">Kwala Buka</string>
+    <string name="book_title">Setlhogo</string>
+    <string name="book_title_hint">Tsenya setlhogo sa buka</string>
+    <string name="book_author">Mokwadi</string>
+    <string name="book_author_hint">Tsenya leina la mokwadi</string>
+    <string name="book_isbn">ISBN</string>
+    <string name="book_isbn_hint">Tsenya nomoro ya ISBN</string>
+    <string name="book_edition">Kgatiso</string>
+    <string name="book_edition_hint">sek., ya ntlha, ya bobedi, ya boraro</string>
+    <string name="book_course_code">Khoutu ya Khoso</string>
+    <string name="book_course_code_hint">sek., CS101</string>
+    <string name="book_price">Tlhotlhwa (R)</string>
+    <string name="book_price_hint">Tsenya tlhotlhwa</string>
+    <string name="book_description_label">Tlhaloso (E sa Tlhokafaleng)</string>
+    <string name="book_description_hint">Tlhalosa seemo sa buka, dilo tse di gateletseng, dinouta, jj.</string>
+    <string name="book_category_label">Kgaolo</string>
+    <string name="book_condition_label">Seemo</string>
+    <string name="button_list_book">Kwala Buka</string>
+    <string name="button_add_photos">Tsenya Ditshwantsho</string>
+    <string name="all_books_title">Dibuka Tsotlhe</string>
+
+    <!-- Book Detail Screen -->
+    <string name="book_detail_heading">Dintlha tsa Buka</string>
+    <string name="book_detail_title">Setlhogo sa Buka</string>
+    <string name="book_detail_author">ka Leina la Mokwadi</string>
+    <string name="book_detail_isbn">ISBN:</string>
+    <string name="book_detail_sold_by">Tshedimosetso ya Moreki</string>
+    <string name="book_detail_course_code">Khoutu ya Khoso:</string>
+    <string name="book_detail_contact_seller">Molaetsa</string>
+    <string name="book_detail_buy_now">Reka Jaanong</string>
+    <string name="book_detail_description">Tlhaloso</string>
+    <string name="book_detail_condition">Seemo:</string>
+
+    <!-- Cart Screen -->
+    <string name="cart_title">Koloi ya Kgwebo</string>
+    <string name="cart_empty_message">Koloi ya gago ga e na sepe. Simolola go bona dibuka!</string>
+    <string name="cart_subtotal">Palogotlhe e Nnyane:</string>
+    <string name="cart_browse">Bona Dibuka</string>
+    <string name="cart_total">Palogotlhe:</string>
+    <string name="button_checkout">Tswelela go Duelo</string>
+    <string name="button_remove">Tlosa</string>
+
+    <!-- Books For Sale Screen -->
+    <string name="books_for_sale_title">Dibuka Tsa Me Tse di Rekilweng</string>
+    <string name="books_for_sale_empty">Ga go na dibuka tse di kwadilweng go rekisiwa.</string>
+    <string name="books_for_sale_add_new">Kwala Buka e Ntšhwa</string>
+
+    <!-- Change Password Screen -->
+    <string name="change_password_title">Fetola Phasewete</string>
+    <string name="enter_current_hint">Tsenya phasewete ya gone jaanong</string>
+    <string name="enter_new_hint">Tsenya phasewete e ntšhwa</string>
+    <string name="confirm_password">Tlhomamisa phasewete</string>
+
+    <!-- Personal Details Screen -->
+    <string name="personal_details_title">Dintlha Tsa Motho</string>
+    <string name="personal_details_profile_title">Setshwantsho sa Me sa Profaele</string>
+    <string name="personal_details_username">Fetola Leina la Modirisi</string>
+    <string name="personal_details_username_title">Leina la Jaanong:</string>
+    <string name="personal_details_username_hint">Tsenya leina le lesha</string>
+    <string name="personal_details_email_title">Fetola Aterese ya Imeili</string>
+    <string name="personal_details_email_hint">Phasewete ya Gago (ya go tlhomamisa)</string>
+    <string name="personal_details_new_email_hint">Aterese e Ntšhwa ya Imeili</string>
+    <string name="personal_details_confirm_email_title">Tlhomamisa Aterese ya Imeili</string>
+    <string name="personal_details_change_email">Fetola Imeili</string>
+    <string name="personal_details_change_picture">Fetola Setshwantsho</string>
+
+    <!-- Track Orders Screen -->
+    <string name="orders_title">Latela Ditaelo</string>
+    <string name="orders_heading">Ditaelo Tse di Bulang</string>
+
+    <!-- All Books -->
+    <string name="view_all_books_heading">Dibuka Tsotlhe</string>
+
+    <!-- Wishlist Screen-->
+    <string name="wishlist_tip">Dibuka tsa gago tsa Google tse di bolokilweng! Tobetsa buka nngwe le nngwe go bona dintlha le go reka mo websaeteng ya Dibuka tsa Google.</string>
+    <string name="wishlist_browse_link">Bona Dibuka tsa Google</string>
+
+    <!-- Google Books Screen -->
+    <string name="google_books_search_hint">Batla Dibuka tsa Google...</string>
+    <string name="google_books_purchase_note">📚 Sediriswa sa go reka se fitlhelega jaanong mo Google</string>
+    <string name="google_books_failed_search">Leka lentswe le lengwe la go batla</string>
+
+    <!-- Language Selection -->
+    <string name="language_selection_title">Tlhopha Puo</string>
+    <string name="language_english">English</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_zulu">isiZulu</string>
+    <string name="language_setswana">Setswana</string>
+    <string name="language_changed">Puo e fetotse go %1$s</string>
+
+    <!-- General & Common UI -->
+    <string name="button_ok">SIAME</string>
+    <string name="button_cancel">Khansela</string>
+    <string name="button_yes">Ee</string>
+    <string name="button_no">Nnyaa</string>
+    <string name="button_submit">Romela</string>
+    <string name="loading">E a laisa…</string>
+
+    <!-- Error & Validation Messages -->
+    <string name="error_field_required">Karolo e e tlhokega</string>
+    <string name="error_invalid_email">Tsweetswee tsenya aterese ya imeili e e siameng</string>
+    <string name="error_password_too_short">Phasewete e tshwanetse ya nna le ditlhaka di ka nna 6</string>
+    <string name="error_passwords_do_not_match">Diphasewete ga di tshwane</string>
+    <string name="error_network_connection">Phoso ya mafaratlhatlha. Tsweetswee tlhola kgolagano ya gago.</string>
+    <string name="error_generic">Phoso e e sa letelwang e diragetse. Tsweetswee leka gape.</string>
+    <string name="error_login_failed">Go tsena go paletse. Tsweetswee tlhola dintlha tsa gago.</string>
+    <string name="error_registration_failed">Go ingodisa go paletse. Tsweetswee leka moragonyana.</string>
+
+    <!-- Book Categories -->
+    <string name="category_tech">Thekenoloji</string>
+    <string name="category_law">Molao</string>
+    <string name="category_business">Kgwebo</string>
+    <string name="category_science">Saense</string>
+    <string name="category_humanities">Botho</string>
+    <string name="category_google_books">Dibuka tsa Google</string>
+    <string name="category_engineering">Boenjiniere</string>
+    <string name="category_medical">Kalafi</string>
+    <string name="category_other">Tse Dingwe</string>
+
+    <!-- Book Conditions -->
+    <string name="condition_new">Jaaka Ntšhwa</string>
+    <string name="condition_excellent">E Ntle Thata</string>
+    <string name="condition_good">E Ntle</string>
+    <string name="condition_fair">E Lolameng</string>
+    <string name="condition_poor">E Maswe</string>
+
+    <!-- Add these to res/values-tn/strings.xml (Setswana) -->
+    <string name="profile_notifications">Dikitsiso</string>
+    <string name="notification_settings_title">Dithulaganyo tsa Dikitsiso</string>
+    <string name="notification_all">Dikitsiso Tsotlhe</string>
+    <string name="notification_all_desc">Kgontsha kgotsa thibela dikitsiso tsotlhe</string>
+    <string name="notification_orders">Ditlhabololo tsa Ditaelo</string>
+    <string name="notification_orders_desc">Amogela dikitsiso ka diphetogo tsa seemo sa taelo</string>
+    <string name="notification_new_books">Dikwalo Tse Dintšhwa</string>
+    <string name="notification_new_books_desc">Amogela dikitsiso fa dibuka tse dintšhwa di kwadilwe</string>
+    <string name="notification_price_drops">Go Theoha ga Ditlhotlhwa</string>
+    <string name="notification_price_drops_desc">Amogela dikitsiso ka go theoha ga ditlhotlhwa mo lenaaneng la gago la dikeletso</string>
+    <string name="notification_messages">Melaetsa</string>
+    <string name="notification_messages_desc">Amogela dikitsiso ka melaetsa e mesha</string>
+
+</resources>

@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="My Profile"
+                android:text="@string/profile_title"
                 android:textSize="24sp" />
 
             <ImageView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:columnCount="2"
             android:paddingHorizontal="16dp"
-            android:rowCount="2">
+            android:rowCount="3">
 
             <!-- Track Orders -->
             <LinearLayout
@@ -75,7 +75,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/rubik"
                     android:gravity="center"
-                    android:text="Track Orders"
+                    android:text="@string/profile_my_orders"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -100,7 +100,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/rubik"
                     android:gravity="center"
-                    android:text="Personal Details"
+                    android:text="@string/profile_personal_details"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -125,7 +125,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/rubik"
                     android:gravity="center"
-                    android:text="Change Password"
+                    android:text="@string/profile_change_password"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -150,9 +150,125 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/rubik_bold"
                     android:gravity="center"
-                    android:text="My Books For Sale"
+                    android:text="@string/profile_my_books_for_sale"
                     android:textSize="14sp" />
             </LinearLayout>
+
+            <!-- ✅ NEW: My Wishlist -->
+            <LinearLayout
+                android:id="@+id/wishlist"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:backgroundTint="#FFF3E0"
+                    android:padding="8dp"
+                    android:src="@android:drawable/btn_star_big_on"
+                    app:tint="#FF8379" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik_bold"
+                    android:gravity="center"
+                    android:text="@string/profile_my_wishlist"
+                    android:textSize="14sp"
+                    android:textColor="#FF8379" />
+            </LinearLayout>
+
+            <!-- ✅ NEW: Google Books (Optional - if you want direct access) -->
+            <LinearLayout
+                android:id="@+id/googleBooks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:backgroundTint="#E3F2FD"
+                    android:padding="8dp"
+                    android:src="@drawable/google_books_svgrepo_com" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="@string/profile_google_books"
+                    android:textSize="14sp"
+                    android:textColor="#1976D2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/languageIcon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:backgroundTint="#FFF3E0"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_language2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="@string/profile_language"
+                    android:textSize="14sp"
+                    android:textColor="#FF6F00" />
+            </LinearLayout>
+
+            <!-- Add this LinearLayout after the languageIcon in your GridLayout -->
+            <!-- Place it right after the closing </LinearLayout> of languageIcon -->
+
+            <LinearLayout
+                android:id="@+id/notificationSettingsIcon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_columnWeight="1"
+                android:gravity="center"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/icon_holder"
+                    android:backgroundTint="#E8F5E9"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_notifications" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:gravity="center"
+                    android:text="@string/profile_notifications"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50" />
+            </LinearLayout>
+
+
         </GridLayout>
 
         <Space
@@ -178,7 +294,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="My Wallet"
+                    android:text="@string/profile_wallet"
                     android:textSize="20sp" />
                 <TextView
                     android:id="@+id/walletBalance"
@@ -222,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Sell Books"
+                    android:text="@string/profile_sell_books"
                     android:textColor="#54977A"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -248,7 +364,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="My Account"
+                    android:text="@string/profile_account"
                     android:textColor="#54977A"
                     android:textSize="16sp" />
             </LinearLayout>
@@ -270,7 +386,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Payment Preference"
+                    android:text="@string/profile_preference"
                     android:textSize="18sp" />
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -313,7 +429,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Account Actions"
+                    android:text="@string/profile_account_actions"
                     android:textSize="18sp" />
                 <Button
                     android:id="@+id/btnLogout"
@@ -322,7 +438,7 @@
                     android:layout_marginTop="16dp"
                     android:backgroundTint="#F44336"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Logout"
+                    android:text="@string/profile_logout"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     app:cornerRadius="10dp"
@@ -334,4 +450,3 @@
 
     </LinearLayout>
 </ScrollView>
-

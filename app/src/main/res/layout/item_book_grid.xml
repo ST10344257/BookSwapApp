@@ -5,73 +5,93 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:strokeWidth="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:orientation="vertical"
+        android:padding="12dp">
 
-        <ImageView
-            android:id="@+id/bookCover"
-            android:layout_width="0dp"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="Book Cover Image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:srcCompat="@drawable/books_svgrepo_com" />
+        <!-- Book Image with Fixed Aspect Ratio -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
 
-        <TextView
-            android:id="@+id/bookTitle"
-            android:layout_width="0dp"
+            <ImageView
+                android:id="@+id/bookImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Book Cover"
+                tools:src="@drawable/books_svgrepo_com" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Book Details Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/bookCover"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Building Products With Data" />
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/bookPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorPrimary"
-            app:layout_constraintTop_toBottomOf="@id/bookTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="R550" />
+            <!-- Book Title -->
+            <TextView
+                android:id="@+id/bookTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/rubik_semibold"
+                android:maxLines="2"
+                android:minHeight="44dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Project Management: A Practical Guide" />
 
-        <Button
-            android:id="@+id/btnAddToCart"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Add to Cart"
-            app:layout_constraintTop_toBottomOf="@id/bookPrice"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/favoriteIcon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginEnd="8dp"/>
+            <!-- Book Author -->
+            <TextView
+                android:id="@+id/bookAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:textColor="@color/gray_text"
+                android:textSize="14sp"
+                tools:text="Jack Gido" />
 
-        <ImageView
-            android:id="@+id/favoriteIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_favorite_border"
-            app:tint="@android:color/darker_gray"
-            android:contentDescription="Add to Favorites"
-            app:layout_constraintTop_toTopOf="@id/btnAddToCart"
-            app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <!-- Condition Badge -->
+            <TextView
+                android:id="@+id/bookCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/condition_badge_background"
+                android:fontFamily="@font/rubik_medium"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/green_success"
+                android:textSize="12sp"
+                android:visibility="visible"
+                tools:text="Excellent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Price -->
+            <TextView
+                android:id="@+id/bookPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/rubik_bold"
+                android:textColor="@color/orange_primary"
+                android:textSize="20sp"
+                tools:text="R699.00" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>
-

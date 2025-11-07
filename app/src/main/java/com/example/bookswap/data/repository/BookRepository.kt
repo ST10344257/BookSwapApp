@@ -73,24 +73,28 @@ class BookRepository {
 
     suspend fun getAllBooks(limit: Int = 20): Result<List<Book>> {
         return try {
+            // Get all books, filter client-side
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                .whereEqualTo("status", BookStatus.AVAILABLE.name)  // Only show AVAILABLE
-                .limit(limit.toLong())
+                .limit(50) // Get more than needed
                 .get()
                 .await()
 
-            val books = snapshot.toObjects(Book::class.java)
-            Result.Success(books)
+            val allBooks = snapshot.toObjects(Book::class.java)
+
+            // Filter and sort in app
+            val availableBooks = allBooks
+                .filter { it.status == BookStatus.AVAILABLE }
+                .sortedByDescending { it.listedAt }
+                .take(limit)
+
+            android.util.Log.d("BookRepository", "Found ${availableBooks.size} available books")
+
+            Result.Success(availableBooks)
         } catch (e: Exception) {
-            if (e.message?.contains("FAILED_PRECONDITION") == true ||
-                e.message?.contains("NOT_FOUND") == true) {
-                Result.Success(emptyList())
-            } else {
-                Result.Error(e)
-            }
+            android.util.Log.e("BookRepository", "Error getting books", e)
+            Result.Error(e)
         }
     }
-
     suspend fun getBooksByCategory(category: BookCategory, limit: Int = 20): Result<List<Book>> {
         return try {
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
@@ -115,8 +119,8 @@ class BookRepository {
 
     suspend fun searchBooks(query: String): Result<List<Book>> {
         return try {
-            //Firestore doesn't support full-text search well
-            // Algolia
+            // Note: Firestore doesn't support full-text search well
+            // For production, consider Algolia or similar service
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
                 .whereEqualTo("status", BookStatus.AVAILABLE.name)
                 .get()
@@ -136,43 +140,11 @@ class BookRepository {
         }
     }
 
-    suspend fun getBooksBySeller(sellerId: String): Result<List<Book>> {
+    suspend fun getUserBooks(userId: String): Result<List<Book>> {
         return try {
             val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                .whereEqualTo("sellerId", sellerId)
-                .get()
-                .await()
-
-            val books = snapshot.toObjects(Book::class.java)
-            Result.Success(books)
-        } catch (e: Exception) {
-            // If index error, try fetching all books and filter locally
-            if (e.message?.contains("FAILED_PRECONDITION") == true ||
-                e.message?.contains("index") == true) {
-                try {
-                    android.util.Log.d("BookRepository", "Index not ready, fetching all books and filtering locally")
-
-                    val allSnapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                        .get()
-                        .await()
-
-                    val allBooks = allSnapshot.toObjects(Book::class.java)
-                    val filteredBooks = allBooks.filter { it.sellerId == sellerId }
-
-                    Result.Success(filteredBooks)
-                } catch (retryException: Exception) {
-                    Result.Error(retryException)
-                }
-            } else {
-                Result.Error(e)
-            }
-        }
-    }
-
-    /*suspend fun getBooksBySeller(sellerId: String): Result<List<Book>> {
-        return try {
-            val snapshot = firestore.collection(Constants.BOOKS_COLLECTION)
-                .whereEqualTo("sellerId", sellerId)
+                .whereEqualTo("sellerId", userId)
+                .orderBy("listedAt", Query.Direction.DESCENDING)
                 .get()
                 .await()
 
@@ -181,7 +153,7 @@ class BookRepository {
         } catch (e: Exception) {
             Result.Error(e)
         }
-    }*/
+    }
 
     suspend fun updateBookStatus(bookId: String, status: BookStatus): Result<Boolean> {
         return try {
@@ -228,6 +200,4 @@ class BookRepository {
             // Fail silently for view counts
         }
     }
-
-
 }

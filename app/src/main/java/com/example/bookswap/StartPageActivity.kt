@@ -8,11 +8,14 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
 
 /**
  * StartPageActivity - comes after InsightActivity. Contains btnprevious and btnlogin.
  */
 class StartPageActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

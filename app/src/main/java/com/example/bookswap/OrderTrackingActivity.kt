@@ -27,6 +27,8 @@ class OrderTrackingActivity : AppCompatActivity() {
         private const val TAG = "OrderTrackingActivity"
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = OrderPageBinding.inflate(layoutInflater)

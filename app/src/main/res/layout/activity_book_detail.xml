@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    tools:context=".BookDetailActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@drawable/profilebg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Top Bar -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="@drawable/profilebg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
+
 
             <ImageView
                 android:id="@+id/btnBack"
@@ -31,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Book Details"
+                android:text="@string/book_detail_heading"
                 android:textSize="24sp" />
 
             <ImageView
@@ -41,7 +43,23 @@
                 android:src="@drawable/shopping_cart_svgrepo_com" />
         </LinearLayout>
 
-        <!-- Image ViewPager -->
+
+
+<ScrollView
+    android:id="@+id/scrollView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+    <LinearLayout
+        android:id="@+id/main_content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/imageViewPager"
             android:layout_width="match_parent"
@@ -49,7 +67,6 @@
             android:layout_margin="16dp"
             android:background="@drawable/rounded_edttext" />
 
-        <!-- Dots Indicator -->
         <LinearLayout
             android:id="@+id/dotsIndicator"
             android:layout_width="wrap_content"
@@ -57,7 +74,6 @@
             android:layout_gravity="center"
             android:orientation="horizontal" />
 
-        <!-- Book Info Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/rubik_semibold"
-                        android:text="Condition:"
+                        android:text="@string/book_detail_condition"
                         android:textSize="16sp" />
 
                     <TextView
@@ -136,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/rubik_semibold"
-                        android:text="ISBN:"
+                        android:text="@string/book_detail_isbn"
                         android:textSize="16sp" />
 
                     <TextView
@@ -159,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/rubik_semibold"
-                        android:text="Course Code:"
+                        android:text="@string/book_detail_course_code"
                         android:textSize="16sp" />
 
                     <TextView
@@ -172,12 +188,20 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/bookPublishedDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/rubik_semibold"
-                    android:text="Description"
-                    android:textSize="18sp" />
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/rubik"
+                    android:text="Published: 2025-01-01"
+                    android:textSize="16sp"
+                    android:visibility="gone" /> <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/rubik_semibold"
+                android:text="@string/book_detail_description"
+                android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/bookDescription"
@@ -190,8 +214,8 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Seller Info Card -->
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/sellerInfoGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -208,7 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rubik_semibold"
-                    android:text="Seller Information"
+                    android:text="@string/book_detail_sold_by"
                     android:textSize="18sp" />
 
                 <TextView
@@ -232,7 +256,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -247,7 +270,7 @@
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#FF8379"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Buy Now"
+                android:text="@string/book_detail_buy_now"
                 android:textSize="18sp"
                 app:cornerRadius="10dp" />
 
@@ -259,10 +282,32 @@
                 android:layout_marginStart="8dp"
                 android:backgroundTint="#54977A"
                 android:fontFamily="@font/rubik_semibold"
-                android:text="Message"
+                android:text="@string/book_detail_contact_seller"
                 android:textSize="18sp"
                 app:cornerRadius="10dp" />
         </LinearLayout>
 
     </LinearLayout>
+
 </ScrollView>
+        <!-- Loading Indicator - Centered over the whole screen -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:visibility="visible" />
+
+
+        <!-- Group to control visibility of all main content at once -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/contentGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="scrollView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,8 @@ data class User(
     val booksSold: Int = 0,
     val walletBalance: Double = 0.0,
     val paymentPreference: PaymentPreference = PaymentPreference.WALLET,
-    val createdAt: Long = System.currentTimeMillis()
+    val createdAt: Long = System.currentTimeMillis(),
+    val fcmToken: String = ""
 ) : Parcelable
 
 enum class PaymentPreference {
